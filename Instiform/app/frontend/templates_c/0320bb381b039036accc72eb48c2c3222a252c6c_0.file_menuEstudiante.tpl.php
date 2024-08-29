@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-08-30 00:13:54
+/* Smarty version 5.4.0, created on 2024-08-30 01:55:37
   from 'file:templates\menuEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66d0f2a2325116_14518383',
+  'unifunc' => 'content_66d10a798aa132_93691590',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0320bb381b039036accc72eb48c2c3222a252c6c' => 
     array (
       0 => 'templates\\menuEstudiante.tpl',
-      1 => 1724969387,
+      1 => 1724975736,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66d0f2a2325116_14518383 (\Smarty\Template $_smarty_tpl) {
+function content_66d10a798aa132_93691590 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -38,7 +38,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 </style>
 
 
-<button class="btn btn-logout" onclick="window.location.href='index.html'">Cerrar sesión</button>
+<button class="btn btn-logout" onclick="window.location.href='index.php' ">Cerrar sesión</button>
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
     <h1 class="welcome-heading">Instiform</h1>

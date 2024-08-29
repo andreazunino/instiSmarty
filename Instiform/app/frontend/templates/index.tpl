@@ -3,12 +3,19 @@
 
 {include 'templates/head.tpl'}
 
+<head>
+    <!-- Incluye el archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    <!-- Incluye tu archivo de estilos personalizados -->
+    <link rel="stylesheet" href="../styles.css"> <!-- Asegúrate de que esta ruta sea correcta -->
+</head>
 
 <body>
     <div class="container-fluid text-center container-welcome">
         <h1 class="welcome-heading">Bienvenido a Instiform</h1>
-        <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo">
+        <!-- Aplicación de la clase 'logo-small' para el logo pequeño -->
+        <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
         <button id="btn-bienvenido" class="btn btn-custom mt-4" data-toggle="modal" data-target="#loginModal">Login</button>
     </div>
 
@@ -23,14 +30,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <button id="btn-estudiante" class="btn btn-primary btn-block">Soy Estudiante</button>
-                    <button id="btn-administrador" class="btn btn-secondary btn-block mt-2">Soy Administrador</button>
+                    <button id="btn-estudiante" onclick="window.location.href='menuEstudiante.php'" class="btn btn-primary btn-block">Soy Estudiante</button>
+                    <button id="btn-administrador" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='menuAdministrador.php'">Soy Administrador</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Importa las librerías JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="funciones.js"></script> 

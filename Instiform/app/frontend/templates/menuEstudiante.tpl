@@ -12,7 +12,7 @@
 </style>
 
 
-<button class="btn btn-logout" onclick="window.location.href='index.html'">Cerrar sesión</button>
+<button class="btn btn-logout" onclick="window.location.href='index.php' ">Cerrar sesión</button>
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
     <h1 class="welcome-heading">Instiform</h1>

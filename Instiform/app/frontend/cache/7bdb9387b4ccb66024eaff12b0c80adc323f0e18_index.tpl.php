@@ -1,30 +1,30 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-08-30 00:03:11
+/* Smarty version 5.4.0, created on 2024-08-30 01:54:53
   from 'file:templates/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66d0f01f13c9a9_43314369',
+  'unifunc' => 'content_66d10a4d1ec057_68385900',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7bdb9387b4ccb66024eaff12b0c80adc323f0e18' => 
     array (
       0 => 'templates/index.tpl',
-      1 => 1724509508,
+      1 => 1724975687,
       2 => 'file',
     ),
     '78da1a73b519e68083421018d2278376a82293fb' => 
     array (
       0 => 'templates/head.tpl',
-      1 => 1724509508,
+      1 => 1724975123,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ))) {
-function content_66d0f01f13c9a9_43314369 (\Smarty\Template $_smarty_tpl) {
+function content_66d10a4d1ec057_68385900 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -40,12 +40,19 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
     </head>
 
     
+<head>
+    <!-- Incluye el archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    <!-- Incluye tu archivo de estilos personalizados -->
+    <link rel="stylesheet" href="../styles.css"> <!-- Asegúrate de que esta ruta sea correcta -->
+</head>
 
 <body>
     <div class="container-fluid text-center container-welcome">
         <h1 class="welcome-heading">Bienvenido a Instiform</h1>
-        <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo">
+        <!-- Aplicación de la clase 'logo-small' para el logo pequeño -->
+        <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
         <button id="btn-bienvenido" class="btn btn-custom mt-4" data-toggle="modal" data-target="#loginModal">Login</button>
     </div>
 
@@ -60,14 +67,15 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
                     </button>
                 </div>
                 <div class="modal-body">
-                    <button id="btn-estudiante" class="btn btn-primary btn-block">Soy Estudiante</button>
-                    <button id="btn-administrador" class="btn btn-secondary btn-block mt-2">Soy Administrador</button>
+                    <button id="btn-estudiante" onclick="window.location.href='menuEstudiante.php'" class="btn btn-primary btn-block">Soy Estudiante</button>
+                    <button id="btn-administrador" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='menuAdministrador.php'">Soy Administrador</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Importa las librerías JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="funciones.js"></script> 
