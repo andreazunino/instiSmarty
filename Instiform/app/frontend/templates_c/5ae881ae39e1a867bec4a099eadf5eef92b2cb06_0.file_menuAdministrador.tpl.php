@@ -1,7 +1,33 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-08-30 00:09:05
+  from 'file:templates\menuAdministrador.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66d0f18122ea31_31084250',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5ae881ae39e1a867bec4a099eadf5eef92b2cb06' => 
+    array (
+      0 => 'templates\\menuAdministrador.tpl',
+      1 => 1724969321,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66d0f18122ea31_31084250 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
 
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -64,8 +90,15 @@
     <!-- ver si agregamos texto -->
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
-</html>
+</html><?php }
+}
