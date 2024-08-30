@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-08-30 01:54:53
+/* Smarty version 5.4.0, created on 2024-08-30 02:01:03
   from 'file:templates/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66d10a4d1ec057_68385900',
+  'unifunc' => 'content_66d10bbf158bc9_17198700',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7bdb9387b4ccb66024eaff12b0c80adc323f0e18' => 
     array (
       0 => 'templates/index.tpl',
-      1 => 1724975687,
+      1 => 1724976061,
       2 => 'file',
     ),
     '78da1a73b519e68083421018d2278376a82293fb' => 
@@ -24,7 +24,7 @@ if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ))) {
-function content_66d10a4d1ec057_68385900 (\Smarty\Template $_smarty_tpl) {
+function content_66d10bbf158bc9_17198700 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -45,7 +45,54 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- Incluye tu archivo de estilos personalizados -->
-    <link rel="stylesheet" href="../styles.css"> <!-- Asegúrate de que esta ruta sea correcta -->
+    <style>
+    body {
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+.welcome-heading {
+    font-size: 36px;
+    font-weight: bold;
+    color: #343a40;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de login personalizado */
+.btn-custom {
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #357abd;
+}
+
+/* Estilo del modal */
+.modal-content {
+    border-radius: 15px;
+}
+
+/* Centrar contenido de bienvenida */
+.container-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+    </style>
 </head>
 
 <body>

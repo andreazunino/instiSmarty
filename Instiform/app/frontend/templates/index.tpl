@@ -8,7 +8,54 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- Incluye tu archivo de estilos personalizados -->
-    <link rel="stylesheet" href="../styles.css"> <!-- Asegúrate de que esta ruta sea correcta -->
+    <style>
+    body {
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+.welcome-heading {
+    font-size: 36px;
+    font-weight: bold;
+    color: #343a40;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de login personalizado */
+.btn-custom {
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #357abd;
+}
+
+/* Estilo del modal */
+.modal-content {
+    border-radius: 15px;
+}
+
+/* Centrar contenido de bienvenida */
+.container-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+    </style>
 </head>
 
 <body>

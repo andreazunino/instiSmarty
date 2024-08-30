@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-08-30 01:55:37
+/* Smarty version 5.4.0, created on 2024-08-30 02:02:15
   from 'file:templates\menuEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66d10a798aa132_93691590',
+  'unifunc' => 'content_66d10c07a84e08_87887690',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0320bb381b039036accc72eb48c2c3222a252c6c' => 
     array (
       0 => 'templates\\menuEstudiante.tpl',
-      1 => 1724975736,
+      1 => 1724976122,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66d10a798aa132_93691590 (\Smarty\Template $_smarty_tpl) {
+function content_66d10c07a84e08_87887690 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -34,7 +34,50 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-    }
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+.logo-small {
+    max-width: 50px;
+    margin-top: 10px;
+}
+/* Barra de navegación */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.dropdown-item:hover {
+    background-color: #e9ecef;
+}
+
+
+/* Botón de cerrar sesión */
+.btn-logout {
+    background-color: #d33f4d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-logout:hover {
+    background-color: #63597a;
+}
+
 </style>
 
 
