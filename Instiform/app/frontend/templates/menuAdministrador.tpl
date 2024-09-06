@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 
-{include 'templates/header.tpl'}
+{include 'templates/head.tpl'}
 <body>
 <style>
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-    }
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+.logo-small {
+    max-width: 50px;
+    margin-top: 10px;
+}
+
+
+
+/* Barra de navegación */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.dropdown-item:hover {
+    background-color: #e9ecef;
+}
+/* Botón de cerrar sesión */
+.btn-logout {
+    background-color: #d33f4d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-logout:hover {
+    background-color: #63597a;
+}
 </style>
 
 
-<button class="btn btn-logout" onclick="window.location.href='index.html'">Cerrar sesión</button>
+<button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
     <h1 class="welcome-heading">Instiform</h1>
