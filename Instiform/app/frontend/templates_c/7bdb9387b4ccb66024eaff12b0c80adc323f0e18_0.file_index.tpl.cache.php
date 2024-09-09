@@ -1,7 +1,35 @@
+<?php
+/* Smarty version 5.4.0, created on 2024-08-30 02:01:03
+  from 'file:templates/index.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66d10bbf0f58d7_87571645',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '7bdb9387b4ccb66024eaff12b0c80adc323f0e18' => 
+    array (
+      0 => 'templates/index.tpl',
+      1 => 1724976061,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66d10bbf0f58d7_87571645 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+$_smarty_tpl->getCompiled()->nocache_hash = '149561338266d10bbf000619_42666424';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 
 <head>
     <!-- Incluye el archivo CSS de Bootstrap -->
@@ -85,10 +113,20 @@
     </div>
 
     <!-- Importa las librerías JavaScript de Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="funciones.js"></script> 
+    <?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="funciones.js"><?php echo '</script'; ?>
+> 
 </body>
 
 </html>
+<?php }
+}

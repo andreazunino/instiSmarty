@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once 'lib/Smarty/libs/Smarty.class.php'; 
+=======
+require_once 'lib/Smarty/libs/Smarty.class.php';
+>>>>>>> 8fce9bb678ff6c843f09bb7b66f2c1f8ffac5c7c
 /**
  * Example Application
  *
@@ -8,7 +12,7 @@ require_once 'lib/Smarty/libs/Smarty.class.php';
 
 $smarty = new \Smarty\Smarty;
 
-$smarty->debugging = true;
+
 $smarty->caching = true;
 $smarty->cache_lifetime = 120;
 $smarty->assign("Name", "Fred Irving Johnathan Bradley Peppergill", true);
