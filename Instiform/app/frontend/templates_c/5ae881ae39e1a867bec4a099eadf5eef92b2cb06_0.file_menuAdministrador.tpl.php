@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-09 23:51:21
+/* Smarty version 5.4.0, created on 2024-09-10 00:40:57
   from 'file:templates\menuAdministrador.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66df6dd9ef13b7_62546104',
+  'unifunc' => 'content_66df7979341729_50742778',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5ae881ae39e1a867bec4a099eadf5eef92b2cb06' => 
     array (
       0 => 'templates\\menuAdministrador.tpl',
-      1 => 1725918035,
+      1 => 1725921656,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66df6dd9ef13b7_62546104 (\Smarty\Template $_smarty_tpl) {
+function content_66df7979341729_50742778 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -96,10 +96,10 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
                     Administrar Estudiantes
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Dar de Alta</a>
-                    <a class="dropdown-item" href="#">Dar de Baja</a>
-                    <a class="dropdown-item" href="#">Modificar Datos</a>
-                    <a class="dropdown-item" href="#">Ver Datos e Inscripciones</a>
+                    <a class="dropdown-item" href="altaEstudiante.php">Dar de Alta</a>
+                    <a class="dropdown-item" href="bajaEstudiante.php">Dar de Baja</a>
+                    <a class="dropdown-item" href="modificarEstudiante.php">Modificar Datos</a>
+                    <a class="dropdown-item" href="verInscripciones.php">Ver Datos e Inscripciones</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

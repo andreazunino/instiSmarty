@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-10 00:36:39
+  from 'file:templates\bajaEstudiante.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66df7877d269f7_82782262',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'a8657edfd6ceea77693225ea2c1342734c09ad7a' => 
+    array (
+      0 => 'templates\\bajaEstudiante.tpl',
+      1 => 1725921399,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66df7877d269f7_82782262 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -108,17 +134,34 @@
             <label for="curso">Seleccionar Curso:</label>
             <select class="form-control" id="curso" name="curso" required>
                 <option value="">--Seleccionar Curso--</option>
-                {foreach from=$cursos item=curso}
-                    <option value="{$curso}">{$curso}</option>
-                {/foreach}
+                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
+$foreach0DoElse = false;
+?>
+                    <option value="<?php echo $_smarty_tpl->getValue('curso');?>
+"><?php echo $_smarty_tpl->getValue('curso');?>
+</option>
+                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </select>
         </div>
         <button type="submit" name="buscarCurso" class="btn btn-danger">Listar Estudiantes</button>
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
+<?php }
+}

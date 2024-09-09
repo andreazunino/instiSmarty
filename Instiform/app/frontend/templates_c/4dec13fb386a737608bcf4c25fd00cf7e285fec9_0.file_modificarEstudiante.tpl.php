@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-10 00:38:47
+  from 'file:templates\modificarEstudiante.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66df78f73c5ec8_79014620',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4dec13fb386a737608bcf4c25fd00cf7e285fec9' => 
+    array (
+      0 => 'templates\\modificarEstudiante.tpl',
+      1 => 1725921525,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66df78f73c5ec8_79014620 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -98,36 +124,49 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
 
-    {if isset($estudiante)}
+    <?php if ((null !== ($_smarty_tpl->getValue('estudiante') ?? null))) {?>
         <hr>
         <!-- Formulario para modificar los datos del estudiante -->
         <h2>Modificar Estudiante</h2>
         <form action="modificarEstudiante.php" method="POST">
-            <input type="hidden" name="id" value="{$estudiante.id}">
+            <input type="hidden" name="id" value="<?php echo $_smarty_tpl->getValue('estudiante')['id'];?>
+">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" value="{$estudiante.nombre}" required>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $_smarty_tpl->getValue('estudiante')['nombre'];?>
+" required>
             </div>
             <div class="form-group">
                 <label for="apellido">Apellido:</label>
-                <input type="text" class="form-control" id="apellido" name="apellido" value="{$estudiante.apellido}" required>
+                <input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo $_smarty_tpl->getValue('estudiante')['apellido'];?>
+" required>
             </div>
             <div class="form-group">
                 <label for="documento">Número de Documento:</label>
-                <input type="text" class="form-control" id="documento" name="documento" value="{$estudiante.documento}" required>
+                <input type="text" class="form-control" id="documento" name="documento" value="<?php echo $_smarty_tpl->getValue('estudiante')['documento'];?>
+" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" value="{$estudiante.email}" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $_smarty_tpl->getValue('estudiante')['email'];?>
+" required>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar Estudiante</button>
         </form>
-    {/if}
+    <?php }?>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
 </body>
 </html>
+<?php }
+}

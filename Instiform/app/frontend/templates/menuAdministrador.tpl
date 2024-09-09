@@ -70,10 +70,10 @@
                     Administrar Estudiantes
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Dar de Alta</a>
-                    <a class="dropdown-item" href="#">Dar de Baja</a>
-                    <a class="dropdown-item" href="#">Modificar Datos</a>
-                    <a class="dropdown-item" href="#">Ver Datos e Inscripciones</a>
+                    <a class="dropdown-item" href="altaEstudiante.php">Dar de Alta</a>
+                    <a class="dropdown-item" href="bajaEstudiante.php">Dar de Baja</a>
+                    <a class="dropdown-item" href="modificarEstudiante.php">Modificar Datos</a>
+                    <a class="dropdown-item" href="verInscripciones.php">Ver Datos e Inscripciones</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-10 00:33:15
+  from 'file:templates\altaEstudiante.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66df77abc24fe4_51207539',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd2587ec0d095529ac621422a0424748e88dc604c' => 
+    array (
+      0 => 'templates\\altaEstudiante.tpl',
+      1 => 1725921194,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66df77abc24fe4_51207539 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -65,11 +91,12 @@
 </style>
 
 
+
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Dar de Baja Estudiantes</h1>
+    <h1 class="welcome-heading">Dar de Alta Estudiantes</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -88,37 +115,38 @@
 </nav>
 
 <div class="container text-center">
-    
-    <!-- Opción 1: Buscar por número de documento -->
-    <h3>Buscar por Número de Documento</h3>
-    <form action="bajaEstudiante.php" method="POST">
-        <div class="form-group">
-            <label for="documento">Número de Documento:</label>
-            <input type="text" class="form-control" id="documento" name="documento" required>
-        </div>
-        <button type="submit" name="buscarDocumento" class="btn btn-danger">Dar de Baja</button>
-    </form>
 
-    <hr>
-
-    <!-- Opción 2: Buscar por curso -->
-    <h3>Buscar por Curso</h3>
-    <form action="bajaEstudiante.php" method="POST">
+    <form action="altaEstudiante.php" method="POST">
         <div class="form-group">
-            <label for="curso">Seleccionar Curso:</label>
-            <select class="form-control" id="curso" name="curso" required>
-                <option value="">--Seleccionar Curso--</option>
-                {foreach from=$cursos item=curso}
-                    <option value="{$curso}">{$curso}</option>
-                {/foreach}
-            </select>
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
         </div>
-        <button type="submit" name="buscarCurso" class="btn btn-danger">Listar Estudiantes</button>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" class="form-control" id="telefono" name="telefono">
+        </div>
+        <button type="submit" class="btn btn-custom">Dar de Alta</button>
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
+<?php }
+}
