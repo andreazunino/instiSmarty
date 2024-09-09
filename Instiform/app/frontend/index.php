@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 require_once 'lib/Smarty/libs/Smarty.class.php'; 
-=======
-require_once 'lib/Smarty/libs/Smarty.class.php';
->>>>>>> 8fce9bb678ff6c843f09bb7b66f2c1f8ffac5c7c
 /**
  * Example Application
  *

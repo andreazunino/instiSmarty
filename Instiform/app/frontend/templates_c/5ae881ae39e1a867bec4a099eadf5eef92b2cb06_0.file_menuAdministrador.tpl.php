@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-10 00:07:50
-  from 'file:templates\menuEstudiante.tpl' */
+/* Smarty version 5.4.0, created on 2024-09-09 23:51:21
+  from 'file:templates\menuAdministrador.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66df71b6b71289_81412767',
+  'unifunc' => 'content_66df6dd9ef13b7_62546104',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '0320bb381b039036accc72eb48c2c3222a252c6c' => 
+    '5ae881ae39e1a867bec4a099eadf5eef92b2cb06' => 
     array (
-      0 => 'templates\\menuEstudiante.tpl',
-      1 => 1725919602,
+      0 => 'templates\\menuAdministrador.tpl',
+      1 => 1725918035,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,13 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66df71b6b71289_81412767 (\Smarty\Template $_smarty_tpl) {
+function content_66df6dd9ef13b7_62546104 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
 
 <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
-
 <body>
 <style>
     body {
@@ -43,6 +42,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
     max-width: 50px;
     margin-top: 10px;
 }
+
+
+
 /* Barra de navegación */
 .navbar {
     margin-bottom: 20px;
@@ -56,8 +58,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 .dropdown-item:hover {
     background-color: #e9ecef;
 }
-
-
 /* Botón de cerrar sesión */
 .btn-logout {
     background-color: #d33f4d;
@@ -77,11 +77,10 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 .btn-logout:hover {
     background-color: #63597a;
 }
-
 </style>
 
 
-<button class="btn btn-logout" onclick="window.location.href='index.php' ">Cerrar sesión</button>
+<button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
     <h1 class="welcome-heading">Instiform</h1>
@@ -91,15 +90,38 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Cursos
+                    Administrar Estudiantes
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href=".\inscribirCurso.php">Inscribirse a curso</a>
-                    <a class="dropdown-item" href="anularInscripcion.php">Anular inscripción a curso</a>
-                    <a class="dropdown-item" href="verCursosInscriptos.php">Ver cursos inscriptos</a>
+                    <a class="dropdown-item" href="#">Dar de Alta</a>
+                    <a class="dropdown-item" href="#">Dar de Baja</a>
+                    <a class="dropdown-item" href="#">Modificar Datos</a>
+                    <a class="dropdown-item" href="#">Ver Datos e Inscripciones</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Administrar Cursos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Dar de Alta</a>
+                    <a class="dropdown-item" href="#">Dar de Baja</a>
+                    <a class="dropdown-item" href="#">Modificar Datos</a>
+                    <a class="dropdown-item" href="#">Listar cursos</a>
+                    <a class="dropdown-item" href="#">Notas</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Administrar Inscripciones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Inscribir</a>
+                    <a class="dropdown-item" href="#">Borrar Inscripción</a>
+                    <a class="dropdown-item" href="#">Listar Inscripciones</a>
                 </div>
             </li>
         </ul>
@@ -107,8 +129,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 </nav>
 
 <div class="container text-center">
-    <h2>Bienvenido Estudiante</h2>
-    <!-- ver si agregramos texto -->
+    <h2>Bienvenido Administrador</h2>
+    <!-- ver si agregamos texto -->
 </div>
 
 <?php echo '<script'; ?>

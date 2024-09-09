@@ -2,4 +2,4 @@
 require_once('lib\smarty\libs\Smarty.class.php');
 
 $smarty = new Smarty\Smarty;                                    
-$smarty->display('templates\menuEstudiante.tpl');
+$smarty->display('templates\inscribirCurso.tpl');

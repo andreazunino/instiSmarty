@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-10 00:07:50
-  from 'file:templates\menuEstudiante.tpl' */
+/* Smarty version 5.4.0, created on 2024-09-10 00:07:35
+  from 'file:templates/menuEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66df71b6b71289_81412767',
+  'unifunc' => 'content_66df71a738dc96_89906303',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '0320bb381b039036accc72eb48c2c3222a252c6c' => 
+    '4cf14d4dfc3e4d0dfdc192114a63fb9f88849a63' => 
     array (
-      0 => 'templates\\menuEstudiante.tpl',
+      0 => 'templates/menuEstudiante.tpl',
       1 => 1725919602,
       2 => 'file',
     ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66df71b6b71289_81412767 (\Smarty\Template $_smarty_tpl) {
+function content_66df71a738dc96_89906303 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
