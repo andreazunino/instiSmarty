@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-10 00:40:57
+/* Smarty version 5.4.0, created on 2024-09-16 23:46:55
   from 'file:templates\menuAdministrador.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66df7979341729_50742778',
+  'unifunc' => 'content_66e8a74f0d6ea3_14297874',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5ae881ae39e1a867bec4a099eadf5eef92b2cb06' => 
     array (
       0 => 'templates\\menuAdministrador.tpl',
-      1 => 1725921656,
+      1 => 1726523213,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66df7979341729_50742778 (\Smarty\Template $_smarty_tpl) {
+function content_66e8a74f0d6ea3_14297874 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -107,11 +107,11 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
                     Administrar Cursos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Dar de Alta</a>
-                    <a class="dropdown-item" href="#">Dar de Baja</a>
-                    <a class="dropdown-item" href="#">Modificar Datos</a>
-                    <a class="dropdown-item" href="#">Listar cursos</a>
-                    <a class="dropdown-item" href="#">Notas</a>
+                    <a class="dropdown-item" href="darAltaCurso.php">Dar de Alta</a>
+                    <a class="dropdown-item" href="darBajaCurso.php">Dar de Baja</a>
+                    <a class="dropdown-item" href="modificarDatosCurso.php">Modificar Datos</a>
+                    <a class="dropdown-item" href="listarCursos.php">Listar cursos</a>
+                    <a class="dropdown-item" href="notas.php">Notas</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -119,9 +119,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
                     Administrar Inscripciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Inscribir</a>
-                    <a class="dropdown-item" href="#">Borrar Inscripción</a>
-                    <a class="dropdown-item" href="#">Listar Inscripciones</a>
+                    <a class="dropdown-item" href="inscribirEstudiante.php">Inscribir</a>
+                    <a class="dropdown-item" href="borrarInscripcion.php">Borrar Inscripción</a>
+                    <a class="dropdown-item" href="listarInscripciones.php">Listar Inscripciones</a>
                 </div>
             </li>
         </ul>

@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-16 23:48:18
+  from 'file:templates\inscribirEstudiante.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66e8a7a2e64809_41326692',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '606da8649934dc2140578fd3c66c9379c09c5941' => 
+    array (
+      0 => 'templates\\inscribirEstudiante.tpl',
+      1 => 1726523282,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66e8a7a2e64809_41326692 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -50,13 +76,13 @@
 .btn-logout:hover {
     background-color: #63597a;
 }
-</style>    
+</style>
 
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Listado de Cursos</h1>
+    <h1 class="welcome-heading">Inscribir Estudiante</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -75,26 +101,27 @@
 </nav>
 
 <div class="container">
-    <h2>Lista de Cursos</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Cupo Total</th>
-                <th>Cupo Disponible</th>
-            </tr>
-        </thead>
-        <tbody id="coursesTableBody">
-            <!-- Las filas de la tabla se llenarán con JavaScript -->
-        </tbody>
-    </table>
+    <form id="inscripcionForm">
+        <div class="form-group">
+            <label for="dni">DNI del Estudiante:</label>
+            <input type="text" class="form-control" id="dni" name="dni" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar Cursos</button>
+    </form>
+    <div id="coursesList" class="mt-4"></div>
+    <div id="message" class="mt-4"></div>
 </div>
 
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
+<?php }
+}

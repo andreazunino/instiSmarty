@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-16 23:40:51
+  from 'file:templates\notas.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66e8a5e37d7110_91433572',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2df6d57659c7a60df632b7fafcc44a6e96e373b4' => 
+    array (
+      0 => 'templates\\notas.tpl',
+      1 => 1726522825,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66e8a5e37d7110_91433572 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -100,24 +126,42 @@
                 </tr>
             </thead>
             <tbody id="notesTableBody">
-                {if isset($notas)}
-                    {foreach from=$notas item=nota}
+                <?php if ((null !== ($_smarty_tpl->getValue('notas') ?? null))) {?>
+                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('notas'), 'nota');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('nota')->value) {
+$foreach0DoElse = false;
+?>
                         <tr>
-                            <td>{$nota.estudiante}</td>
-                            <td>{$nota.curso}</td>
-                            <td>{$nota.nota}</td>
+                            <td><?php echo $_smarty_tpl->getValue('nota')['estudiante'];?>
+</td>
+                            <td><?php echo $_smarty_tpl->getValue('nota')['curso'];?>
+</td>
+                            <td><?php echo $_smarty_tpl->getValue('nota')['nota'];?>
+</td>
                         </tr>
-                    {/foreach}
-                {/if}
+                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                <?php }?>
             </tbody>
         </table>
     </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
 </body>
 </html>
+<?php }
+}

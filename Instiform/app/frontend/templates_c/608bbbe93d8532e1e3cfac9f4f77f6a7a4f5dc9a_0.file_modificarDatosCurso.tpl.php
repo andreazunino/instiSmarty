@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-17 00:42:22
-  from 'file:templates\altaEstudiante.tpl' */
+/* Smarty version 5.4.0, created on 2024-09-16 23:40:43
+  from 'file:templates\modificarDatosCurso.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66e8b44e730e67_56033854',
+  'unifunc' => 'content_66e8a5dbad6674_04725688',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd2587ec0d095529ac621422a0424748e88dc604c' => 
+    '608bbbe93d8532e1e3cfac9f4f77f6a7a4f5dc9a' => 
     array (
-      0 => 'templates\\altaEstudiante.tpl',
-      1 => 1726526481,
+      0 => 'templates\\modificarDatosCurso.tpl',
+      1 => 1726522818,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66e8b44e730e67_56033854 (\Smarty\Template $_smarty_tpl) {
+function content_66e8a5dbad6674_04725688 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -41,6 +41,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
     max-width: 50px;
     margin-top: 10px;
 }
+
+
+
 /* Barra de navegación */
 .navbar {
     margin-bottom: 20px;
@@ -54,8 +57,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 .dropdown-item:hover {
     background-color: #e9ecef;
 }
-
-
 /* Botón de cerrar sesión */
 .btn-logout {
     background-color: #d33f4d;
@@ -75,28 +76,13 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 .btn-logout:hover {
     background-color: #63597a;
 }
-
-.btn-custom {
-    background-color: #4a90e2;
-    color: #ffffff;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-}
-
 </style>
-
-
 
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Dar de Alta Estudiantes</h1>
+    <h1 class="welcome-heading">Modificar Datos del Curso</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -115,25 +101,36 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 </nav>
 
 <div class="container text-center">
-
-    <form action="altaEstudiante.php" method="POST">
+    <h2>Formulario para Modificar Datos del Curso</h2>
+    <!-- Formulario para modificar los datos del curso -->
+    <form action="modificarDatosCurso.php" method="POST">
         <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+            <label for="curso">Seleccionar Curso:</label>
+            <select class="form-control" id="curso" name="curso" onchange="loadCourseDetails()" required>
+                <!-- Opciones llenadas por PHP -->
+                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
+$foreach0DoElse = false;
+?>
+                    <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+</option>
+                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+            </select>
         </div>
         <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" required>
+            <label for="nombreCurso">Nuevo Nombre del Curso:</label>
+            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" required>
         </div>
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <label for="cupo">Nuevo Cupo:</label>
+            <input type="number" class="form-control" id="cupo" name="cupo" required>
         </div>
-        <div class="form-group">
-            <label for="telefono">Teléfono:</label>
-            <input type="text" class="form-control" id="telefono" name="telefono">
-        </div>
-        <button type="submit" class="btn btn-custom">Dar de Alta</button>
+        <button type="submit" class="btn btn-primary">Modificar Curso</button>
     </form>
 </div>
 
@@ -143,9 +140,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
- src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
->
+
 </body>
 </html>
 <?php }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-17 00:42:22
-  from 'file:templates\altaEstudiante.tpl' */
+/* Smarty version 5.4.0, created on 2024-09-17 00:37:18
+  from 'file:templates/altaEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66e8b44e730e67_56033854',
+  'unifunc' => 'content_66e8b31e349f88_91077741',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd2587ec0d095529ac621422a0424748e88dc604c' => 
+    '6314d378869bfa956cd2390eecda53d4eb7532a2' => 
     array (
-      0 => 'templates\\altaEstudiante.tpl',
-      1 => 1726526481,
+      0 => 'templates/altaEstudiante.tpl',
+      1 => 1726526233,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66e8b44e730e67_56033854 (\Smarty\Template $_smarty_tpl) {
+function content_66e8b31e349f88_91077741 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -115,27 +115,59 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 </nav>
 
 <div class="container text-center">
+<form id="altaEstudianteForm" action="altaEstudiante.php" method="POST">
+    <div class="form-group">
+        <label for="dni">DNI:</label>
+        <input type="text" class="form-control" id="dni" name="dni" required>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido:</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    
+    <button type="submit" class="btn btn-custom">Dar de Alta</button>
+</form>
 
-    <form action="altaEstudiante.php" method="POST">
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
-        </div>
-        <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="telefono">Teléfono:</label>
-            <input type="text" class="form-control" id="telefono" name="telefono">
-        </div>
-        <button type="submit" class="btn btn-custom">Dar de Alta</button>
-    </form>
 </div>
+
+<?php echo '<script'; ?>
+>
+document.getElementById('altaEstudianteForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+
+    // Recoger los datos del formulario
+    const formData = new FormData(this);
+
+    try {
+        // Enviar los datos al servidor usando fetch
+        const response = await fetch('altaEstudiante.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        // Verificar si la respuesta fue exitosa
+        if (response.ok) {
+            const data = await response.json(); // Obtener la respuesta como JSON
+            document.getElementById('responseMessage').innerHTML = data.message;
+        } else {
+            document.getElementById('responseMessage').innerHTML = 'Error en la respuesta del servidor.';
+        }
+    } catch (error) {
+        document.getElementById('responseMessage').innerHTML = 'Hubo un problema con la conexión al servidor.';
+    }
+});
+
+<?php echo '</script'; ?>
+>
+
 
 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>

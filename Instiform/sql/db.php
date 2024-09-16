@@ -3,9 +3,9 @@
 // Datos de conexión a la base de datos
 $host = "localhost";
 $port = "5432";
-$dbname = "instiform"; // Nombre de tu base de datos
-$user = "tu_usuario"; // Usuario de la base de datos
-$password = "tu_contraseña"; // Contraseña del usuario
+$dbname = "postgres"; // Nombre de tu base de datos
+$user = "ResuMiniOS"; // Usuario de la base de datos
+$password = "1234"; // Contraseña del usuario
 
 // Establecer conexión
 try {

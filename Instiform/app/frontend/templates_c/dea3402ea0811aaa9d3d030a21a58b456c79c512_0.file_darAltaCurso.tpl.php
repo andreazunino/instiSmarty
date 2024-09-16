@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-16 23:40:48
+  from 'file:templates\darAltaCurso.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66e8a5e09d80d9_16887475',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'dea3402ea0811aaa9d3d030a21a58b456c79c512' => 
+    array (
+      0 => 'templates\\darAltaCurso.tpl',
+      1 => 1726522807,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66e8a5e09d80d9_16887475 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -56,7 +82,7 @@
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Consultar Notas</h1>
+    <h1 class="welcome-heading">Dar de Alta Curso</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -74,50 +100,32 @@
     </div>
 </nav>
 
-<div class="container">
-    <h2>Consultar Notas</h2>
-    <form id="consultaNotasForm">
+<div class="container text-center">
+    <h2>Formulario para Dar de Alta un Curso</h2>
+    <!-- Formulario para dar de alta un curso -->
+    <form action="darDeAltaCurso.php" method="POST">
         <div class="form-group">
-            <label for="searchType">Buscar por:</label>
-            <select class="form-control" id="searchType" name="searchType" required>
-                <option value="dni">DNI del Estudiante</option>
-                <option value="curso">ID del Curso</option>
-            </select>
+            <label for="nombreCurso">Nombre del Curso:</label>
+            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" required>
         </div>
         <div class="form-group">
-            <label for="searchValue">Número:</label>
-            <input type="text" class="form-control" id="searchValue" name="searchValue" required>
+            <label for="cupo">Cupo:</label>
+            <input type="number" class="form-control" id="cupo" name="cupo" required>
         </div>
-        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="submit" class="btn btn-primary">Dar de Alta</button>
     </form>
-    <div class="mt-4">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Estudiante</th>
-                    <th>Curso</th>
-                    <th>Nota</th>
-                </tr>
-            </thead>
-            <tbody id="notesTableBody">
-                {if isset($notas)}
-                    {foreach from=$notas item=nota}
-                        <tr>
-                            <td>{$nota.estudiante}</td>
-                            <td>{$nota.curso}</td>
-                            <td>{$nota.nota}</td>
-                        </tr>
-                    {/foreach}
-                {/if}
-            </tbody>
-        </table>
-    </div>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
+<?php }
+}

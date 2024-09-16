@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-17 00:42:22
-  from 'file:templates\altaEstudiante.tpl' */
+/* Smarty version 5.4.0, created on 2024-09-16 23:40:46
+  from 'file:templates\darBajaCurso.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66e8b44e730e67_56033854',
+  'unifunc' => 'content_66e8a5de953944_16402949',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd2587ec0d095529ac621422a0424748e88dc604c' => 
+    'dd6a35a480c6dc3d9576f6338c3dc2c46d97bf58' => 
     array (
-      0 => 'templates\\altaEstudiante.tpl',
-      1 => 1726526481,
+      0 => 'templates\\darBajaCurso.tpl',
+      1 => 1726522811,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66e8b44e730e67_56033854 (\Smarty\Template $_smarty_tpl) {
+function content_66e8a5de953944_16402949 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -41,6 +41,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
     max-width: 50px;
     margin-top: 10px;
 }
+
+
+
 /* Barra de navegación */
 .navbar {
     margin-bottom: 20px;
@@ -54,8 +57,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 .dropdown-item:hover {
     background-color: #e9ecef;
 }
-
-
 /* Botón de cerrar sesión */
 .btn-logout {
     background-color: #d33f4d;
@@ -75,28 +76,13 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 .btn-logout:hover {
     background-color: #63597a;
 }
-
-.btn-custom {
-    background-color: #4a90e2;
-    color: #ffffff;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-}
-
 </style>
-
-
 
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Dar de Alta Estudiantes</h1>
+    <h1 class="welcome-heading">Dar de Baja Curso</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -115,25 +101,32 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\instiSmarty\\Instiform\\app\\frontend
 </nav>
 
 <div class="container text-center">
-
-    <form action="altaEstudiante.php" method="POST">
+    <h2>Formulario para Dar de Baja un Curso</h2>
+    <!-- Formulario para dar de baja un curso -->
+    <form action="darDeBajaCurso.php" method="POST">
         <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+            <label for="curso">Seleccionar Curso:</label>
+            <select class="form-control" id="curso" name="curso" required>
+                <!-- Opciones llenadas dinámicamente con Smarty -->
+                <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cursos')) > 0) {?>
+                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
+$foreach0DoElse = false;
+?>
+                        <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+</option>
+                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                <?php } else { ?>
+                    <option value="">No hay cursos disponibles</option>
+                <?php }?>
+            </select>
         </div>
-        <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="telefono">Teléfono:</label>
-            <input type="text" class="form-control" id="telefono" name="telefono">
-        </div>
-        <button type="submit" class="btn btn-custom">Dar de Alta</button>
+        <button type="submit" class="btn btn-danger">Dar de Baja</button>
     </form>
 </div>
 

@@ -1,5 +1,5 @@
 <?php
-require_once '../db.php'; // Conexión a la base de datos
+require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib\smarty\libs\Smarty.class.php';
 
 $smarty = new Smarty\Smarty;

@@ -81,11 +81,11 @@
                     Administrar Cursos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Dar de Alta</a>
-                    <a class="dropdown-item" href="#">Dar de Baja</a>
-                    <a class="dropdown-item" href="#">Modificar Datos</a>
-                    <a class="dropdown-item" href="#">Listar cursos</a>
-                    <a class="dropdown-item" href="#">Notas</a>
+                    <a class="dropdown-item" href="darAltaCurso.php">Dar de Alta</a>
+                    <a class="dropdown-item" href="darBajaCurso.php">Dar de Baja</a>
+                    <a class="dropdown-item" href="modificarDatosCurso.php">Modificar Datos</a>
+                    <a class="dropdown-item" href="listarCursos.php">Listar cursos</a>
+                    <a class="dropdown-item" href="notas.php">Notas</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -93,9 +93,9 @@
                     Administrar Inscripciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Inscribir</a>
-                    <a class="dropdown-item" href="#">Borrar Inscripción</a>
-                    <a class="dropdown-item" href="#">Listar Inscripciones</a>
+                    <a class="dropdown-item" href="inscribirEstudiante.php">Inscribir</a>
+                    <a class="dropdown-item" href="borrarInscripcion.php">Borrar Inscripción</a>
+                    <a class="dropdown-item" href="listarInscripciones.php">Listar Inscripciones</a>
                 </div>
             </li>
         </ul>
