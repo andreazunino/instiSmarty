@@ -6,15 +6,17 @@ $smarty = new Smarty\Smarty;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoger datos del formulario
+    $dni = $_POST['dni'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $email = $_POST['email'];
 
     // Validar los campos
-    if (!empty($nombre) && !empty($apellido) && !empty($email)) {
+    if (!empty($dni) &&!empty($nombre) && !empty($apellido) && !empty($email)) {
         try {
             // Insertar el nuevo estudiante en la base de datos
-            $stmt = $pdo->prepare("INSERT INTO estudiantes (nombre, apellido, email) VALUES (:nombre, :apellido, :email)");
+            $stmt = $pdo->prepare("INSERT INTO estudiantes (dni,nombre, apellido, email) VALUES (:dni,:nombre, :apellido, :email)");
+            $stmt->bindParam(':dni', $dni);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':apellido', $apellido);
             $stmt->bindParam(':email', $email);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-08-30 00:17:14
+/* Smarty version 5.4.0, created on 2024-09-19 00:10:47
   from 'file:templates\menuEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66d0f36a313357_27073412',
+  'unifunc' => 'content_66eb4fe7ab7028_92644434',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '946d9ea6cebb86deea65cb48e8affb1e2126e141' => 
     array (
       0 => 'templates\\menuEstudiante.tpl',
-      1 => 1724969828,
+      1 => 1726314738,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66d0f36a313357_27073412 (\Smarty\Template $_smarty_tpl) {
+function content_66eb4fe7ab7028_92644434 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -34,11 +34,54 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-    }
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+.logo-small {
+    max-width: 50px;
+    margin-top: 10px;
+}
+/* Barra de navegación */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.dropdown-item:hover {
+    background-color: #e9ecef;
+}
+
+
+/* Botón de cerrar sesión */
+.btn-logout {
+    background-color: #d33f4d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-logout:hover {
+    background-color: #63597a;
+}
+
 </style>
 
 
-<button class="btn btn-logout" onclick="window.location.href='index.html'">Cerrar sesión</button>
+<button class="btn btn-logout" onclick="window.location.href='index.php' ">Cerrar sesión</button>
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
     <h1 class="welcome-heading">Instiform</h1>
@@ -54,9 +97,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
                     Cursos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Inscribirse a curso</a>
-                    <a class="dropdown-item" href="#">Anular inscripción a curso</a>
-                    <a class="dropdown-item" href="#">Ver cursos inscriptos</a>
+                    <a class="dropdown-item" href=".\inscribirCurso.php">Inscribirse a curso</a>
+                    <a class="dropdown-item" href="anularInscripcion.php">Anular inscripción a curso</a>
+                    <a class="dropdown-item" href="verCursosInscriptos.php">Ver cursos inscriptos</a>
                 </div>
             </li>
         </ul>
