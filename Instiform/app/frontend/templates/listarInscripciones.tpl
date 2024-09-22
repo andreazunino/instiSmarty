@@ -6,50 +6,16 @@
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
-.logo-small {
-    max-width: 50px;
-    margin-top: 10px;
-}
-
-
-
-/* Barra de navegación */
-.navbar {
-    margin-bottom: 20px;
-}
-
-.dropdown-menu {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-}
-
-.dropdown-item:hover {
-    background-color: #e9ecef;
-}
-/* Botón de cerrar sesión */
-.btn-logout {
-    background-color: #d33f4d;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.btn-logout:hover {
-    background-color: #63597a;
-}
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+    .logo-small {
+        max-width: 50px;
+        margin-top: 10px;
+    }
+    /* Otros estilos aquí */
 </style>     
 
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
@@ -66,9 +32,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                    Volver al Menú Administrador
-                </a>
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php">Volver al Menú Administrador</a>
             </li>
         </ul>
     </div>
@@ -76,7 +40,7 @@
 
 <div class="container">
     <h2>Listar Inscripciones</h2>
-    <form id="buscarForm">
+    <form id="buscarForm" action="listarInscripciones.php" method="get">
         <div class="form-group">
             <label for="dniEstudiante">DNI del Estudiante (opcional):</label>
             <input type="text" class="form-control" id="dniEstudiante" name="dniEstudiante">
@@ -87,11 +51,36 @@
         </div>
         <button type="submit" class="btn btn-primary">Buscar Inscripciones</button>
     </form>
-    <button id="listarTodas" class="btn btn-secondary mt-2">Listar Todas las Inscripciones</button>
-    <div id="inscripcionesList" class="mt-4"></div>
+    <button id="listarTodas" class="btn btn-secondary mt-2" onclick="window.location.href='listarInscripciones.php'">Listar Todas las Inscripciones</button>
+    <div id="inscripcionesList" class="mt-4">
+        {if $inscripciones|@count > 0}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>DNI Estudiante</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>ID Curso</th>
+                        <th>Fecha Inscripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$inscripciones item=inscripcion}
+                        <tr>
+                            <td>{$inscripcion.dni_estudiante}</td>
+                            <td>{$inscripcion.nombre}</td>
+                            <td>{$inscripcion.apellido}</td>
+                            <td>{$inscripcion.id_curso}</td>
+                            <td>{$inscripcion.fecha_inscripcion}</td>
+                        </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+        {else}
+            <p>No se encontraron inscripciones.</p>
+        {/if}
+    </div>
 </div>
-
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
