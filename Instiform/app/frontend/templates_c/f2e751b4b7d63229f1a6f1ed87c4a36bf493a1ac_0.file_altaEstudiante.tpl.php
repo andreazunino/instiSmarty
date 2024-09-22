@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-22 14:29:54
+/* Smarty version 5.4.0, created on 2024-09-22 14:39:27
   from 'file:templates/altaEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66f00dc2bbaa28_93200057',
+  'unifunc' => 'content_66f00fff7a21c4_47714417',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f2e751b4b7d63229f1a6f1ed87c4a36bf493a1ac' => 
     array (
       0 => 'templates/altaEstudiante.tpl',
-      1 => 1727008061,
+      1 => 1727008750,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66f00dc2bbaa28_93200057 (\Smarty\Template $_smarty_tpl) {
+function content_66f00fff7a21c4_47714417 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -115,7 +115,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     <form action="altaEstudiante.php" method="POST">
         <div class="form-group">
             <label for="dni">DNI:</label>
-            <input type="integer" class="form-control" id="dni" name="dni" required>
+            <input type="text" class="form-control" id="dni" name="dni" required pattern="\d+" title="Solo se permiten números">
         </div>
         <div class="form-group">
             <label for="nombre">Nombre:</label>
@@ -131,8 +131,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         </div>
         <button type="submit" class="btn btn-custom">Dar de Alta</button>
     </form>
-</div>
-
+    
 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
 >

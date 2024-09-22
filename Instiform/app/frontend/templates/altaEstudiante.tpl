@@ -87,7 +87,7 @@
     <form action="altaEstudiante.php" method="POST">
         <div class="form-group">
             <label for="dni">DNI:</label>
-            <input type="integer" class="form-control" id="dni" name="dni" required>
+            <input type="text" class="form-control" id="dni" name="dni" required pattern="\d+" title="Solo se permiten números">
         </div>
         <div class="form-group">
             <label for="nombre">Nombre:</label>
@@ -103,8 +103,7 @@
         </div>
         <button type="submit" class="btn btn-custom">Dar de Alta</button>
     </form>
-</div>
-
+    
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
