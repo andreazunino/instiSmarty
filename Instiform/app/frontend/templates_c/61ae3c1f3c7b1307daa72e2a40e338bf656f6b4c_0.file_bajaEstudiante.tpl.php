@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-22 16:00:07
+  from 'file:templates/bajaEstudiante.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66f022e7c7b868_54119698',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '61ae3c1f3c7b1307daa72e2a40e338bf656f6b4c' => 
+    array (
+      0 => 'templates/bajaEstudiante.tpl',
+      1 => 1727013595,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66f022e7c7b868_54119698 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -78,26 +104,40 @@
         <button type="submit" name="buscarDocumento" class="btn btn-danger">Buscar Estudiante</button>
     </form>
 
-    {if isset($mensaje)}
-        <div class="alert alert-warning mt-3">{$mensaje}</div>
-    {/if}
+    <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
+        <div class="alert alert-warning mt-3"><?php echo $_smarty_tpl->getValue('mensaje');?>
+</div>
+    <?php }?>
 
-    {if isset($estudiante)}
+    <?php if ((null !== ($_smarty_tpl->getValue('estudiante') ?? null))) {?>
         <h3>Datos del Estudiante</h3>
-        <p><strong>DNI:</strong> {$estudiante.dni}</p>
-        <p><strong>Nombre:</strong> {$estudiante.nombre}</p>
-        <p><strong>Apellido:</strong> {$estudiante.apellido}</p>
-        <p><strong>Email:</strong> {$estudiante.email}</p>
+        <p><strong>DNI:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['dni'];?>
+</p>
+        <p><strong>Nombre:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['nombre'];?>
+</p>
+        <p><strong>Apellido:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['apellido'];?>
+</p>
+        <p><strong>Email:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['email'];?>
+</p>
         <form action="eliminarEstudiante.php" method="POST">
-            <input type="hidden" name="dni" value="{$estudiante.dni}">
+            <input type="hidden" name="dni" value="<?php echo $_smarty_tpl->getValue('estudiante')['dni'];?>
+">
             <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
         </form>
-    {/if}
+    <?php }?>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
 
+<?php }
+}
