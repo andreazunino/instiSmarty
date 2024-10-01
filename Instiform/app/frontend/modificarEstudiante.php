@@ -5,52 +5,39 @@ $smarty = new Smarty\Smarty;
 $smarty->display('templates\modificarEstudiante.tpl');*/
 
 
-require_once '..\..\sql\db.php'; // Conexión a la base de datos
+
+// Incluir la conexión a la base de datos y Smarty
+require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
+// Crear instancia de Smarty
 $smarty = new Smarty\Smarty;
 
+// Mostrar errores para depuración
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recoger datos del formulario
-    $id = $_POST['id_estudiante'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $email = $_POST['email'];
+    // Si es un formulario de búsqueda de estudiante
+    if (isset($_POST['documento']) && !empty($_POST['documento'])) {
+        $documento = $_POST['documento'];
 
-    if (!empty($id) && !empty($nombre) && !empty($apellido) && !empty($email)) {
-        try {
-            // Actualizar el estudiante en la base de datos
-            $stmt = $pdo->prepare("UPDATE estudiantes SET nombre = :nombre, apellido = :apellido, email = :email WHERE id = :id");
-            $stmt->bindParam(':nombre', $nombre);
-            $stmt->bindParam(':apellido', $apellido);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
-            $mensaje = "Datos del estudiante actualizados exitosamente.";
-        } catch (PDOException $e) {
-            $mensaje = "Error al actualizar: " . $e->getMessage();
+        // Preparar consulta para buscar el estudiante por número de documento
+        $query = "SELECT * FROM estudiantes WHERE documento = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$documento]);
+        $estudiante = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Verificar si se encontró al estudiante
+        if ($estudiante) {
+            // Asignar el estudiante a la plantilla Smarty
+            $smarty->assign('estudiante', $estudiante);
+        } else {
+            // En caso de no encontrarlo, enviar un mensaje
+            $smarty->assign('mensaje', "No se encontró al estudiante con el documento: " . htmlspecialchars($documento));
         }
-    } else {
-        $mensaje = "Por favor, completa todos los campos.";
-    }
-
-    $smarty->assign('mensaje', $mensaje);
-}
-
-// Obtener el estudiante seleccionado para modificar
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM estudiantes WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        $estudiante = $stmt->fetch();
-        $smarty->assign('estudiante', $estudiante);
-    } catch (PDOException $e) {
-        $mensaje = "Error al cargar el estudiante: " . $e->getMessage();
-        $smarty->assign('mensaje', $mensaje);
     }
 }
 
+// Mostrar la plantilla
 $smarty->display('templates/modificarEstudiante.tpl');
-
