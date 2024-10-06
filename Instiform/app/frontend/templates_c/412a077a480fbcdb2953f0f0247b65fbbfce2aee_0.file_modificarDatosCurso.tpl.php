@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-10-06 23:50:58
-  from 'file:templates/darAltaCurso.tpl' */
+/* Smarty version 5.4.0, created on 2024-10-07 00:05:18
+  from 'file:templates\modificarDatosCurso.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67030642155972_70270874',
+  'unifunc' => 'content_6703099ea401b0_08555115',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8d3a8ff8070012aabc8a2b757828619c78ce031a' => 
+    '412a077a480fbcdb2953f0f0247b65fbbfce2aee' => 
     array (
-      0 => 'templates/darAltaCurso.tpl',
-      1 => 1727805357,
+      0 => 'templates\\modificarDatosCurso.tpl',
+      1 => 1726695549,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_67030642155972_70270874 (\Smarty\Template $_smarty_tpl) {
+function content_6703099ea401b0_08555115 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -82,7 +82,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Dar de Alta Curso</h1>
+    <h1 class="welcome-heading">Modificar Datos del Curso</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -92,7 +92,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="\..\darAltaCurso.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
                     Volver al Menú Administrador
                 </a>
             </li>
@@ -101,18 +101,36 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 </nav>
 
 <div class="container text-center">
-    <h2>Formulario para Dar de Alta un Curso</h2>
-    <!-- Formulario para dar de alta un curso -->
-    <form action="../darDeAltaCurso.php" method="POST">
+    <h2>Formulario para Modificar Datos del Curso</h2>
+    <!-- Formulario para modificar los datos del curso -->
+    <form action="modificarDatosCurso.php" method="POST">
         <div class="form-group">
-            <label for="nombreCurso">Nombre del Curso:</label>
+            <label for="curso">Seleccionar Curso:</label>
+            <select class="form-control" id="curso" name="curso" onchange="loadCourseDetails()" required>
+                <!-- Opciones llenadas por PHP -->
+                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
+$foreach0DoElse = false;
+?>
+                    <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+</option>
+                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nombreCurso">Nuevo Nombre del Curso:</label>
             <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" required>
         </div>
         <div class="form-group">
-            <label for="cupo">Cupo:</label>
+            <label for="cupo">Nuevo Cupo:</label>
             <input type="number" class="form-control" id="cupo" name="cupo" required>
         </div>
-        <button type="submit" class="btn btn-primary">Dar de Alta</button>
+        <button type="submit" class="btn btn-primary">Modificar Curso</button>
     </form>
 </div>
 
@@ -122,9 +140,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
- src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
->
+
 </body>
 </html>
 <?php }

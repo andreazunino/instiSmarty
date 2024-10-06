@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-10-06 23:50:58
-  from 'file:templates/darAltaCurso.tpl' */
+/* Smarty version 5.4.0, created on 2024-10-07 00:04:54
+  from 'file:templates/darBajaCurso.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67030642155972_70270874',
+  'unifunc' => 'content_67030986a6b3e8_37703797',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8d3a8ff8070012aabc8a2b757828619c78ce031a' => 
+    'cb1eb81284341358eb3c15f04b8358b85f7759e4' => 
     array (
-      0 => 'templates/darAltaCurso.tpl',
-      1 => 1727805357,
+      0 => 'templates/darBajaCurso.tpl',
+      1 => 1726695549,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_67030642155972_70270874 (\Smarty\Template $_smarty_tpl) {
+function content_67030986a6b3e8_37703797 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -82,7 +82,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Dar de Alta Curso</h1>
+    <h1 class="welcome-heading">Dar de Baja Curso</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -92,7 +92,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="\..\darAltaCurso.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
                     Volver al Menú Administrador
                 </a>
             </li>
@@ -101,18 +101,32 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 </nav>
 
 <div class="container text-center">
-    <h2>Formulario para Dar de Alta un Curso</h2>
-    <!-- Formulario para dar de alta un curso -->
-    <form action="../darDeAltaCurso.php" method="POST">
+    <h2>Formulario para Dar de Baja un Curso</h2>
+    <!-- Formulario para dar de baja un curso -->
+    <form action="darDeBajaCurso.php" method="POST">
         <div class="form-group">
-            <label for="nombreCurso">Nombre del Curso:</label>
-            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" required>
+            <label for="curso">Seleccionar Curso:</label>
+            <select class="form-control" id="curso" name="curso" required>
+                <!-- Opciones llenadas dinámicamente con Smarty -->
+                <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cursos')) > 0) {?>
+                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
+$foreach0DoElse = false;
+?>
+                        <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+</option>
+                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                <?php } else { ?>
+                    <option value="">No hay cursos disponibles</option>
+                <?php }?>
+            </select>
         </div>
-        <div class="form-group">
-            <label for="cupo">Cupo:</label>
-            <input type="number" class="form-control" id="cupo" name="cupo" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Dar de Alta</button>
+        <button type="submit" class="btn btn-danger">Dar de Baja</button>
     </form>
 </div>
 

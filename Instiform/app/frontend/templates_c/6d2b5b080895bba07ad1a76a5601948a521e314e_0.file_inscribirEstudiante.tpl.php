@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-10-06 23:50:58
-  from 'file:templates/darAltaCurso.tpl' */
+/* Smarty version 5.4.0, created on 2024-10-06 23:58:34
+  from 'file:templates\inscribirEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67030642155972_70270874',
+  'unifunc' => 'content_6703080a0a73e2_22920077',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8d3a8ff8070012aabc8a2b757828619c78ce031a' => 
+    '6d2b5b080895bba07ad1a76a5601948a521e314e' => 
     array (
-      0 => 'templates/darAltaCurso.tpl',
-      1 => 1727805357,
+      0 => 'templates\\inscribirEstudiante.tpl',
+      1 => 1726695549,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_67030642155972_70270874 (\Smarty\Template $_smarty_tpl) {
+function content_6703080a0a73e2_22920077 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -82,7 +82,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Dar de Alta Curso</h1>
+    <h1 class="welcome-heading">Inscribir Estudiante</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -92,7 +92,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="\..\darAltaCurso.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
                     Volver al Menú Administrador
                 </a>
             </li>
@@ -100,20 +100,16 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     </div>
 </nav>
 
-<div class="container text-center">
-    <h2>Formulario para Dar de Alta un Curso</h2>
-    <!-- Formulario para dar de alta un curso -->
-    <form action="../darDeAltaCurso.php" method="POST">
+<div class="container">
+    <form id="inscripcionForm">
         <div class="form-group">
-            <label for="nombreCurso">Nombre del Curso:</label>
-            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" required>
+            <label for="dni">DNI del Estudiante:</label>
+            <input type="text" class="form-control" id="dni" name="dni" required>
         </div>
-        <div class="form-group">
-            <label for="cupo">Cupo:</label>
-            <input type="number" class="form-control" id="cupo" name="cupo" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Dar de Alta</button>
+        <button type="submit" class="btn btn-primary">Buscar Cursos</button>
     </form>
+    <div id="coursesList" class="mt-4"></div>
+    <div id="message" class="mt-4"></div>
 </div>
 
 <?php echo '<script'; ?>
