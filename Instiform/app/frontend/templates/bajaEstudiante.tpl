@@ -70,7 +70,7 @@
 
 <div class="container text-center">
     <h3>Buscar por Número de Documento</h3>
-    <form action="bajaEstudiante.php" method="POST">
+    <form action="bajaEstudiante.php" method="post">
         <div class="form-group">
             <label for="documento">Número de Documento:</label>
             <input type="text" class="form-control" id="documento" name="documento" required>
@@ -88,7 +88,7 @@
         <p><strong>Nombre:</strong> {$estudiante.nombre}</p>
         <p><strong>Apellido:</strong> {$estudiante.apellido}</p>
         <p><strong>Email:</strong> {$estudiante.email}</p>
-        <form action="eliminarEstudiante.php" method="POST">
+        <form action="bajaEstudiante.php" method="POST">
             <input type="hidden" name="dni" value="{$estudiante.dni}">
             <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
         </form>
