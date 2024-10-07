@@ -1,4 +1,13 @@
 <?php
+<<<<<<< HEAD
+/*require_once('lib\smarty\libs\Smarty.class.php');
+
+$smarty = new Smarty\Smarty;                                    
+$smarty->display('templates\bajaEstudiante.tpl');*/
+
+
+=======
+>>>>>>> 815d0942ae223405a471aa2b6fa1c68ee3011303
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
