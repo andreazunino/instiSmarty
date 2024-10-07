@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-09-22 14:28:21
+  from 'file:templates\altaEstudiante.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_66f00d65346521_41014091',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '3d25555db7d20211b1abcef5b4b65acbacc4d282' => 
+    array (
+      0 => 'templates\\altaEstudiante.tpl',
+      1 => 1727008061,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_66f00d65346521_41014091 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -74,20 +100,22 @@
     
     
     <!-- Mostrar mensajes de éxito o error -->
-    {if $mensaje}
-        <div class="alert alert-{$mensaje_tipo} alert-dismissible fade show" role="alert">
-           {$mensaje}
+    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
+        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
+ alert-dismissible fade show" role="alert">
+           <?php echo $_smarty_tpl->getValue('mensaje');?>
+
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
         </div>
-    {/if}
+    <?php }?>
 
 
     <form action="altaEstudiante.php" method="POST">
         <div class="form-group">
             <label for="dni">DNI:</label>
-            <input type="text" class="form-control" id="dni" name="dni" required pattern="\d+" title="Solo se permiten números">
+            <input type="integer" class="form-control" id="dni" name="dni" required>
         </div>
         <div class="form-group">
             <label for="nombre">Nombre:</label>
@@ -103,9 +131,18 @@
         </div>
         <button type="submit" class="btn btn-custom">Dar de Alta</button>
     </form>
-    
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
+<?php }
+}

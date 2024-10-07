@@ -4,8 +4,8 @@
 $host = "localhost";
 $port = "5432";
 $dbname = "postgres"; // Nombre de tu base de datos
-$user = "ResuMiniOS"; // Usuario de la base de datos
-$password = "1234"; // Contraseña del usuario
+$user = "Andrea Zunino"; // Usuario de la base de datos
+$password = ""; // Contraseña del usuario
 
 // Establecer conexión
 try {

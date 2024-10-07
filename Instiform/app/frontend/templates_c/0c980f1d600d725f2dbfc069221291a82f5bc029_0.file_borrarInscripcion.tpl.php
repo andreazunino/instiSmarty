@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-10-07 00:01:19
+  from 'file:templates/borrarInscripcion.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_670308afaed6e4_20959531',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '0c980f1d600d725f2dbfc069221291a82f5bc029' => 
+    array (
+      0 => 'templates/borrarInscripcion.tpl',
+      1 => 1728252071,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_670308afaed6e4_20959531 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -82,7 +108,7 @@
         <button type="submit" class="btn btn-primary">Buscar Inscripción</button>
     </form>
 
-    {if $inscripciones}
+    <?php if ($_smarty_tpl->getValue('inscripciones')) {?>
     <h2 class="mt-4">Inscripciones Encontradas</h2>
     <table class="table table-bordered mt-4">
         <thead>
@@ -94,32 +120,53 @@
             </tr>
         </thead>
         <tbody>
-            {foreach from=$inscripciones item=inscripcion}
+            <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('inscripciones'), 'inscripcion');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('inscripcion')->value) {
+$foreach0DoElse = false;
+?>
             <tr>
-                <td>{$inscripcion.id}</td>
-                <td>{$inscripcion.estudiante_nombre}</td>
-                <td>{$inscripcion.curso_nombre}</td>
+                <td><?php echo $_smarty_tpl->getValue('inscripcion')['id'];?>
+</td>
+                <td><?php echo $_smarty_tpl->getValue('inscripcion')['estudiante_nombre'];?>
+</td>
+                <td><?php echo $_smarty_tpl->getValue('inscripcion')['curso_nombre'];?>
+</td>
                 <td>
                     <form action="eliminarInscripcion.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="idInscripcion" value="{$inscripcion.id}">
+                        <input type="hidden" name="idInscripcion" value="<?php echo $_smarty_tpl->getValue('inscripcion')['id'];?>
+">
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </form>
                 </td>
             </tr>
-            {/foreach}
+            <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </tbody>
     </table>
-    {/if}
+    <?php }?>
 
-    {if $mensaje}
-    <div class="alert alert-{$mensaje_tipo} mt-3">
-        {$mensaje}
+    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
+    <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
+ mt-3">
+        <?php echo $_smarty_tpl->getValue('mensaje');?>
+
     </div>
-    {/if}
+    <?php }?>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
+<?php }
+}

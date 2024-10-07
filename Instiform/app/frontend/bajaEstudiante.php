@@ -1,46 +1,62 @@
 <?php
+<<<<<<< HEAD
 /*require_once('lib\smarty\libs\Smarty.class.php');
 
 $smarty = new Smarty\Smarty;                                    
 $smarty->display('templates\bajaEstudiante.tpl');*/
 
 
+=======
+>>>>>>> 815d0942ae223405a471aa2b6fa1c68ee3011303
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
 $smarty = new Smarty\Smarty;
 
+// Mostrar errores para depuración
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Verifica que la solicitud es POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recoger el ID del estudiante
-    $id = $_POST['id_estudiante'];
+    
+    // Buscar el estudiante por DNI
+    if (isset($_POST['buscarDocumento'])) {
+        $dni = $_POST['documento'];
 
-    // Verificar que se ha seleccionado un estudiante
-    if (!empty($id)) {
-        try {
-            // Eliminar estudiante de la base de datos
-            $stmt = $pdo->prepare("DELETE FROM estudiantes WHERE id = :id");
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
-            $mensaje = "Estudiante eliminado exitosamente.";
-        } catch (PDOException $e) {
-            $mensaje = "Error al eliminar el estudiante: " . $e->getMessage();
+        // Verificar el DNI
+        $query = "SELECT * FROM estudiantes WHERE dni = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$dni]);
+        $estudiante = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($estudiante) {
+            // Asignar los datos del estudiante a Smarty
+            $smarty->assign('estudiante', $estudiante);
+        } else {
+            $smarty->assign('mensaje', "No se encontró al estudiante con el DNI: " . htmlspecialchars($dni));
         }
-    } else {
-        $mensaje = "Por favor, selecciona un estudiante.";
     }
-
-    $smarty->assign('mensaje', $mensaje);
+    
+    // Eliminar estudiante
+    if (isset($_POST['id_estudiante'])) {
+        $idEstudiante = $_POST['id_estudiante'];
+        
+        // Verificar que el ID del estudiante no está vacío
+        if (!empty($idEstudiante)) {
+            // Realizar la eliminación del estudiante
+            $query = "DELETE FROM estudiantes WHERE id = ?";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$idEstudiante]);
+            
+            // Asignar mensaje de éxito
+            $smarty->assign('mensaje', "Estudiante eliminado con éxito");
+        } else {
+            $smarty->assign('mensaje', "ID del estudiante no proporcionado");
+        }
+    }
 }
 
-// Obtener la lista de estudiantes para mostrar en el formulario
-try {
-    $stmt = $pdo->query("SELECT id, nombre, apellido FROM estudiantes");
-    $estudiantes = $stmt->fetchAll();
-    $smarty->assign('estudiantes', $estudiantes);
-} catch (PDOException $e) {
-    $mensaje = "Error al cargar los estudiantes: " . $e->getMessage();
-    $smarty->assign('mensaje', $mensaje);
-}
-
+// Mostrar la plantilla
 $smarty->display('templates/bajaEstudiante.tpl');
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-09-19 00:10:47
-  from 'file:templates\menuEstudiante.tpl' */
+/* Smarty version 5.4.0, created on 2024-10-06 23:58:34
+  from 'file:templates\inscribirEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_66eb4fe7ab7028_92644434',
+  'unifunc' => 'content_6703080a0a73e2_22920077',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '946d9ea6cebb86deea65cb48e8affb1e2126e141' => 
+    '6d2b5b080895bba07ad1a76a5601948a521e314e' => 
     array (
-      0 => 'templates\\menuEstudiante.tpl',
-      1 => 1726314738,
+      0 => 'templates\\inscribirEstudiante.tpl',
+      1 => 1726695549,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,12 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_66eb4fe7ab7028_92644434 (\Smarty\Template $_smarty_tpl) {
+function content_6703080a0a73e2_22920077 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
-
 <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
-
 <body>
 <style>
     body {
@@ -43,6 +41,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     max-width: 50px;
     margin-top: 10px;
 }
+
+
+
 /* Barra de navegación */
 .navbar {
     margin-bottom: 20px;
@@ -56,8 +57,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 .dropdown-item:hover {
     background-color: #e9ecef;
 }
-
-
 /* Botón de cerrar sesión */
 .btn-logout {
     background-color: #d33f4d;
@@ -77,38 +76,40 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 .btn-logout:hover {
     background-color: #63597a;
 }
-
 </style>
 
+<button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
-<button class="btn btn-logout" onclick="window.location.href='index.php' ">Cerrar sesión</button>
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Instiform</h1>
+    <h1 class="welcome-heading">Inscribir Estudiante</h1>
 </div>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Cursos
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                    Volver al Menú Administrador
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href=".\inscribirCurso.php">Inscribirse a curso</a>
-                    <a class="dropdown-item" href="anularInscripcion.php">Anular inscripción a curso</a>
-                    <a class="dropdown-item" href="verCursosInscriptos.php">Ver cursos inscriptos</a>
-                </div>
             </li>
         </ul>
     </div>
 </nav>
 
-<div class="container text-center">
-    <h2>Bienvenido Estudiante</h2>
-    <!-- ver si agregramos texto -->
+<div class="container">
+    <form id="inscripcionForm">
+        <div class="form-group">
+            <label for="dni">DNI del Estudiante:</label>
+            <input type="text" class="form-control" id="dni" name="dni" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar Cursos</button>
+    </form>
+    <div id="coursesList" class="mt-4"></div>
+    <div id="message" class="mt-4"></div>
 </div>
 
 <?php echo '<script'; ?>
@@ -121,5 +122,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
  src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 </body>
-</html><?php }
+</html>
+<?php }
 }
