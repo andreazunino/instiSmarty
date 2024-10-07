@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-10-07 23:54:59
+/* Smarty version 5.4.0, created on 2024-10-08 00:41:55
   from 'file:templates/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_670458b3616787_74550512',
+  'unifunc' => 'content_670463b3401165_36737021',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,28 +18,18 @@ if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
     '43af6a9bc1c1bc9aa832ffbbbdf708a86f1a5314' => 
     array (
       0 => 'templates/head.tpl',
-      1 => 1724969002,
+      1 => 1728338464,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ))) {
-function content_670458b3616787_74550512 (\Smarty\Template $_smarty_tpl) {
+function content_670463b3401165_36737021 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
 
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title></title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="styles.css" rel="stylesheet"> 
-        <link rel="icon" href="Logo Instiform.png" type="image/x-icon">
-    </head>
-
-    
 <head>
     <!-- Incluye el archivo CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

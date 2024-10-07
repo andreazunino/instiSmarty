@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-10-08 00:42:30
-  from 'file:templates/altaEstudiante.tpl' */
+/* Smarty version 5.4.0, created on 2024-10-08 00:43:57
+  from 'file:templates\bajaEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_670463d6815e76_46211157',
+  'unifunc' => 'content_6704642d383e59_39452964',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'f2e751b4b7d63229f1a6f1ed87c4a36bf493a1ac' => 
+    '056c48c87c32c85987488758059f883ee021366a' => 
     array (
-      0 => 'templates/altaEstudiante.tpl',
-      1 => 1728339182,
+      0 => 'templates\\bajaEstudiante.tpl',
+      1 => 1728239399,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_670463d6815e76_46211157 (\Smarty\Template $_smarty_tpl) {
+function content_6704642d383e59_39452964 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -78,7 +78,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Dar de Alta Estudiantes</h1>
+    <h1 class="welcome-heading">Dar de Baja Estudiantes</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -86,52 +86,47 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto d-flex">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                    Volver al Menú Administrador
-                </a>
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
             </li>
         </ul>
     </div>
 </nav>
 
 <div class="container text-center">
-    
-    
-    <!-- Mostrar mensajes de éxito o error -->
-    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
-        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
- alert-dismissible fade show" role="alert">
-           <?php echo $_smarty_tpl->getValue('mensaje');?>
-
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
+    <h3>Buscar por Número de Documento</h3>
+    <form action="bajaEstudiante.php" method="post">
+        <div class="form-group">
+            <label for="documento">Número de Documento:</label>
+            <input type="text" class="form-control" id="documento" name="documento" required>
         </div>
+        <button type="submit" name="buscarDocumento" class="btn btn-danger">Buscar Estudiante</button>
+    </form>
+
+    <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
+        <div class="alert alert-warning mt-3"><?php echo $_smarty_tpl->getValue('mensaje');?>
+</div>
     <?php }?>
 
+    <?php if ((null !== ($_smarty_tpl->getValue('estudiante') ?? null))) {?>
+        <h3>Datos del Estudiante</h3>
+        <p><strong>DNI:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['dni'];?>
+</p>
+        <p><strong>Nombre:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['nombre'];?>
+</p>
+        <p><strong>Apellido:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['apellido'];?>
+</p>
+        <p><strong>Email:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['email'];?>
+</p>
+        <form action="bajaEstudiante.php" method="POST">
+            <input type="hidden" name="dni" value="<?php echo $_smarty_tpl->getValue('estudiante')['dni'];?>
+">
+            <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
+        </form>
+    <?php }?>
+</div>
 
-    <form action="altaEstudiante.php" method="POST">
-        <div class="form-group">
-            <label for="dni">DNI:</label>
-            <input type="text" class="form-control" id="dni" name="dni" required pattern="\d+" title="Solo se permiten números">
-        </div>
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
-        </div>
-        <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <button type="submit" class="btn btn-custom">Dar de Alta</button>
-    </form>
-    
 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
 >
@@ -143,5 +138,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 >
 </body>
 </html>
+
 <?php }
 }
