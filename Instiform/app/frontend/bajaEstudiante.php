@@ -1,10 +1,4 @@
 <?php
-/*require_once('lib\smarty\libs\Smarty.class.php');
-
-$smarty = new Smarty\Smarty;                                    
-$smarty->display('templates\bajaEstudiante.tpl');*/
-
-
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
@@ -41,13 +35,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Verificar que el ID del estudiante no está vacío
         if (!empty($idEstudiante)) {
-            // Realizar la eliminación del estudiante
-            $query = "DELETE FROM estudiantes WHERE id = ?";
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([$idEstudiante]);
-            
-            // Asignar mensaje de éxito
-            $smarty->assign('mensaje', "Estudiante eliminado con éxito");
+            try {
+                // Realizar la eliminación del estudiante
+                $query = "DELETE FROM estudiantes WHERE id = ?";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute([$idEstudiante]);
+                
+                // Verificar si realmente se eliminó alguna fila
+                if ($stmt->rowCount() > 0) {
+                    $smarty->assign('mensaje', "Estudiante eliminado con éxito");
+                } else {
+                    $smarty->assign('mensaje', "No se pudo eliminar el estudiante.");
+                }
+            } catch (Exception $e) {
+                $smarty->assign('mensaje', "Error al eliminar el estudiante: " . $e->getMessage());
+            }
         } else {
             $smarty->assign('mensaje', "ID del estudiante no proporcionado");
         }
@@ -56,4 +58,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Mostrar la plantilla
 $smarty->display('templates/bajaEstudiante.tpl');
-
