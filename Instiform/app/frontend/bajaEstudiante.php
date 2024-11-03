@@ -13,19 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Buscar el estudiante por DNI
     if (isset($_POST['buscarDocumento'])) {
-        $dni = $_POST['documento'];
+        $dni = trim($_POST['documento']); // trim para eliminar espacios en blanco
+        
+        try {
+            // Verificar el DNI
+            $query = "SELECT * FROM estudiantes WHERE dni = ?";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$dni]);
+            $estudiante = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verificar el DNI
-        $query = "SELECT * FROM estudiantes WHERE dni = ?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$dni]);
-        $estudiante = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($estudiante) {
-            // Asignar los datos del estudiante a Smarty
-            $smarty->assign('estudiante', $estudiante);
-        } else {
-            $smarty->assign('mensaje', "No se encontró al estudiante con el DNI: " . htmlspecialchars($dni));
+            if ($estudiante) {
+                // Asignar los datos del estudiante a Smarty
+                $smarty->assign('estudiante', $estudiante);
+            } else {
+                $smarty->assign('mensaje', "No se encontró al estudiante con el DNI: " . htmlspecialchars($dni));
+            }
+        } catch (Exception $e) {
+            $smarty->assign('mensaje', "Error en la búsqueda: " . $e->getMessage());
         }
     }
     
@@ -33,21 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['id_estudiante'])) {
         $idEstudiante = $_POST['id_estudiante'];
         
-        // Verificar que el ID del estudiante no está vacío
         if (!empty($idEstudiante)) {
             try {
-                // Realizar la eliminación del estudiante
+                // Cambia "id" por el nombre correcto de la columna si es necesario
                 $query = "DELETE FROM estudiantes WHERE id = ?";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute([$idEstudiante]);
                 
-                // Verificar si realmente se eliminó alguna fila
                 if ($stmt->rowCount() > 0) {
                     $smarty->assign('mensaje', "Estudiante eliminado con éxito");
                 } else {
-                    $smarty->assign('mensaje', "No se pudo eliminar el estudiante.");
+                    $smarty->assign('mensaje', "No se pudo eliminar el estudiante o el ID no existe.");
                 }
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 $smarty->assign('mensaje', "Error al eliminar el estudiante: " . $e->getMessage());
             }
         } else {
@@ -56,5 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Mostrar la plantilla
 $smarty->display('templates/bajaEstudiante.tpl');
+
+

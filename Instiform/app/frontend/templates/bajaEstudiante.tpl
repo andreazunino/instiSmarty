@@ -89,12 +89,11 @@
         <p><strong>Apellido:</strong> {$estudiante.apellido}</p>
         <p><strong>Email:</strong> {$estudiante.email}</p>
         <form action="bajaEstudiante.php" method="POST">
-            <input type="hidden" name="dni" value="{$estudiante.dni}">
+            <input type="hidden" name="id_estudiante" value="{$estudiante.id}"> <!-- Asegúrate de que esto coincida con el nombre de columna correcto -->
             <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
         </form>
     {/if}
   
-    
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -102,4 +101,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

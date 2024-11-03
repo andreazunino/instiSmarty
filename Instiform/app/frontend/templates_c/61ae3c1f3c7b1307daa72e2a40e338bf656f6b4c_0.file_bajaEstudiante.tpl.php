@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-10-11 14:18:06
+/* Smarty version 5.4.0, created on 2024-11-03 14:30:54
   from 'file:templates/bajaEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_6709177e9af1f9_46460110',
+  'unifunc' => 'content_67277b0e81e807_43732791',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '61ae3c1f3c7b1307daa72e2a40e338bf656f6b4c' => 
     array (
       0 => 'templates/bajaEstudiante.tpl',
-      1 => 1728648632,
+      1 => 1730640616,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_6709177e9af1f9_46460110 (\Smarty\Template $_smarty_tpl) {
+function content_67277b0e81e807_43732791 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -120,13 +120,12 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         <p><strong>Email:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['email'];?>
 </p>
         <form action="bajaEstudiante.php" method="POST">
-            <input type="hidden" name="dni" value="<?php echo $_smarty_tpl->getValue('estudiante')['dni'];?>
-">
+            <input type="hidden" name="id_estudiante" value="<?php echo $_smarty_tpl->getValue('estudiante')['id'];?>
+"> <!-- Asegúrate de que esto coincida con el nombre de columna correcto -->
             <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
         </form>
     <?php }?>
   
-    
 </div>
 
 <?php echo '<script'; ?>
@@ -140,6 +139,5 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 >
 </body>
 </html>
-
 <?php }
 }
