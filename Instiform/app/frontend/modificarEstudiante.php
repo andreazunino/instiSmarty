@@ -7,14 +7,13 @@ $smarty = new Smarty\Smarty;
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Manejo de la búsqueda de estudiante
+// Manejo de la búsqueda y actualización de estudiante
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['dni']) && !empty($_POST['dni'])) {
+    // Búsqueda de estudiante por DNI
+    if (isset($_POST['dni']) && !empty($_POST['dni']) && !isset($_POST['nombre'])) {
         $documento = $_POST['dni'];
 
-        // Consulta para buscar al estudiante por dni
         $query = "SELECT * FROM estudiantes WHERE dni = ?";
-        
         try {
             $stmt = $pdo->prepare($query);
             $stmt->execute([$documento]);
@@ -26,32 +25,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $smarty->assign('mensaje', "No se encontró al estudiante con el documento: " . htmlspecialchars($documento));
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            $smarty->assign('mensaje', "Error al buscar el estudiante: " . $e->getMessage());
         }
     }
 
-    // Manejo de la actualización del estudiante
-    if (isset($_POST['dni']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email'])) {
+    // Actualización del estudiante
+    if (isset($_POST['dni'], $_POST['nombre'], $_POST['apellido'], $_POST['email'])) {
         $documento = $_POST['dni'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $email = $_POST['email'];
 
-        // Actualización en la base de datos
         $updateQuery = "UPDATE estudiantes SET nombre = ?, apellido = ?, email = ? WHERE dni = ?";
         try {
             $stmt = $pdo->prepare($updateQuery);
             $stmt->execute([$nombre, $apellido, $email, $documento]);
 
-            // Redirigir o mostrar mensaje de éxito
-            header('Location: success.php'); // Asegúrate de tener este archivo
-            exit;
+            $smarty->assign('mensaje', 'Estudiante actualizado exitosamente.');
         } catch (PDOException $e) {
-            echo "Error al actualizar: " . $e->getMessage();
+            $smarty->assign('mensaje', "Error al actualizar el estudiante: " . $e->getMessage());
         }
     }
 }
 
 // Mostrar la plantilla
 $smarty->display('templates/modificarEstudiante.tpl');
-

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-03 14:30:54
+/* Smarty version 5.4.0, created on 2024-11-09 17:09:27
   from 'file:templates/bajaEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67277b0e81e807_43732791',
+  'unifunc' => 'content_672f8937822745_11753083',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '61ae3c1f3c7b1307daa72e2a40e338bf656f6b4c' => 
     array (
       0 => 'templates/bajaEstudiante.tpl',
-      1 => 1730640616,
+      1 => 1731168551,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_67277b0e81e807_43732791 (\Smarty\Template $_smarty_tpl) {
+function content_672f8937822745_11753083 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -32,7 +32,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -111,21 +111,20 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 
     <?php if ((null !== ($_smarty_tpl->getValue('estudiante') ?? null))) {?>
         <h3>Datos del Estudiante</h3>
-        <p><strong>DNI:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['dni'];?>
+        <p><strong>DNI:</strong> <?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['dni'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
-        <p><strong>Nombre:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['nombre'];?>
+        <p><strong>Nombre:</strong> <?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['nombre'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
-        <p><strong>Apellido:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['apellido'];?>
+        <p><strong>Apellido:</strong> <?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['apellido'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
-        <p><strong>Email:</strong> <?php echo $_smarty_tpl->getValue('estudiante')['email'];?>
+        <p><strong>Email:</strong> <?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
         <form action="bajaEstudiante.php" method="POST">
-            <input type="hidden" name="id_estudiante" value="<?php echo $_smarty_tpl->getValue('estudiante')['id'];?>
-"> <!-- Asegúrate de que esto coincida con el nombre de columna correcto -->
+            <input type="hidden" name="id_estudiante" value="<?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['id'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+">
             <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
         </form>
     <?php }?>
-  
 </div>
 
 <?php echo '<script'; ?>

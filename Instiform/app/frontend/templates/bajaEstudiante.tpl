@@ -6,7 +6,7 @@
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -84,16 +84,15 @@
 
     {if isset($estudiante)}
         <h3>Datos del Estudiante</h3>
-        <p><strong>DNI:</strong> {$estudiante.dni}</p>
-        <p><strong>Nombre:</strong> {$estudiante.nombre}</p>
-        <p><strong>Apellido:</strong> {$estudiante.apellido}</p>
-        <p><strong>Email:</strong> {$estudiante.email}</p>
+        <p><strong>DNI:</strong> {$estudiante.dni|default:''}</p>
+        <p><strong>Nombre:</strong> {$estudiante.nombre|default:''}</p>
+        <p><strong>Apellido:</strong> {$estudiante.apellido|default:''}</p>
+        <p><strong>Email:</strong> {$estudiante.email|default:''}</p>
         <form action="bajaEstudiante.php" method="POST">
-            <input type="hidden" name="id_estudiante" value="{$estudiante.id}"> <!-- Asegúrate de que esto coincida con el nombre de columna correcto -->
+            <input type="hidden" name="id_estudiante" value="{$estudiante.id|default:''}">
             <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
         </form>
     {/if}
-  
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

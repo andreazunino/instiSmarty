@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-03 15:03:25
+/* Smarty version 5.4.0, created on 2024-11-09 17:30:11
   from 'file:templates/modificarEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_672782adbd8cb9_15667233',
+  'unifunc' => 'content_672f8e13ca95e3_58737619',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f6df2877c5622c2a38989b25ff290dd1eb7807c7' => 
     array (
       0 => 'templates/modificarEstudiante.tpl',
-      1 => 1730642598,
+      1 => 1731169786,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_672782adbd8cb9_15667233 (\Smarty\Template $_smarty_tpl) {
+function content_672f8e13ca95e3_58737619 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -30,9 +30,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 <body>
 <style>
     body {
-        background: url('fondo.avif') no-repeat center center fixed;
-        background-size: cover;
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -53,7 +51,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         font-weight: bold;
         text-transform: uppercase;
         border-radius: 50px;
-        transition: background-color 0.3s ease;
         position: absolute;
         top: 20px;
         right: 20px;
@@ -67,10 +64,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         border: none;
         padding: 15px 30px;
         font-size: 18px;
-        font-weight: bold;
         text-transform: uppercase;
         border-radius: 50px;
-        transition: background-color 0.3s ease;
     }
     .container {
         margin-top: 30px;
@@ -81,20 +76,11 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Modificar Estudiante</h1>
+    <h1>Modificar Estudiante</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
-            </li>
-        </ul>
-    </div>
+    <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
 </nav>
 
 <div class="container text-center">
@@ -134,16 +120,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         </form>
     <?php }?>
 </div>
-
-<?php echo '<script'; ?>
- src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
->
 </body>
 </html>
 <?php }

@@ -1,8 +1,8 @@
 <?php
-require_once('lib\smarty\libs\Smarty.class.php');
+require_once('lib/smarty/libs/Smarty.class.php');
+require_once('../../sql/db.php'); // Conexión a la base de datos
 
-$smarty = new Smarty\Smarty;                                    
-
+$smarty = new Smarty\Smarty;
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -20,20 +20,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Ejecutar la consulta
             $stmt->execute([$nombreCurso, $cupo]);
 
-            // Asignar un mensaje de éxito a Smarty (si usas Smarty)
-            $mensaje = "El curso ha sido dado de alta correctamente.";
-            $smarty->assign('mensaje', $mensaje);
+            // Asignar un mensaje de éxito a Smarty
+            $smarty->assign('mensaje', "El curso ha sido dado de alta correctamente.");
         } catch (PDOException $e) {
             // Capturar cualquier error en la consulta o conexión
-            $error = "Error al dar de alta el curso: " . $e->getMessage();
-            $smarty->assign('error', $error);
+            $smarty->assign('error', "Error al dar de alta el curso: " . $e->getMessage());
         }
     } else {
         // Si los datos no son válidos, mostrar un mensaje de error
-        $error = "Por favor, complete todos los campos correctamente.";
-        $smarty->assign('error', $error);
+        $smarty->assign('error', "Por favor, complete todos los campos correctamente.");
     }
 }
 
-// Mostrar la plantilla (si estás usando Smarty)
-$smarty->display('templates/darAltaCurso.tpl'); // Cambia la ruta de la plantilla si es necesario
+// Mostrar la plantilla
+$smarty->display('templates/darAltaCurso.tpl');
+
