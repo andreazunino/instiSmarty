@@ -10,11 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoger el valor del curso seleccionado
     $cursoId = $_POST['curso'];
 
+    // Depuración: Verificar el valor de cursoId
+    var_dump($cursoId); // Esto imprimirá el valor de cursoId en el navegador
+    exit;
+
     // Validar que el curso no esté vacío
     if (!empty($cursoId)) {
         try {
             // Preparar la consulta para eliminar el curso
-            $stmt = $pdo->prepare("DELETE FROM cursos WHERE id = :cursoId");
+            $stmt = $pdo->prepare("DELETE FROM curso WHERE id = :cursoId");
             $stmt->bindParam(':cursoId', $cursoId, PDO::PARAM_INT);
             
             // Ejecutar la consulta
@@ -44,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Obtener la lista de cursos para mostrar en el formulario
 try {
-    $stmt = $pdo->query("SELECT id, nombre FROM cursos");
+    $stmt = $pdo->query("SELECT id, nombre FROM curso");
     $cursos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Asignar los cursos a Smarty
@@ -56,4 +60,3 @@ try {
 
 // Mostrar la plantilla con los cursos y el mensaje
 $smarty->display('templates/darBajaCurso.tpl');
-

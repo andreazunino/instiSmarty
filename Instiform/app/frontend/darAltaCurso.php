@@ -1,24 +1,27 @@
 <?php
+// Incluir archivos necesarios
 require_once('lib/smarty/libs/Smarty.class.php');
 require_once('../../sql/db.php'); // Conexión a la base de datos
 
+// Crear instancia de Smarty
 $smarty = new Smarty\Smarty;
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos enviados desde el formulario
-    $nombreCurso = $_POST['nombreCurso'];
+    $nombre = $_POST['nombre'];
+    $id = $_POST['id'];
     $cupo = $_POST['cupo'];
 
-    // Validar los datos (opcional)
-    if (!empty($nombreCurso) && is_numeric($cupo)) {
+    // Validar los datos
+    if (!empty($nombre) && is_numeric($id) && is_numeric($cupo)) {
         try {
             // Preparar la consulta para insertar los datos en la base de datos
-            $query = "INSERT INTO cursos (nombre_curso, cupo) VALUES (?, ?)";
+            $query = "INSERT INTO curso (id, nombre, cupo) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($query);
 
             // Ejecutar la consulta
-            $stmt->execute([$nombreCurso, $cupo]);
+            $stmt->execute([$id, $nombre, $cupo]);
 
             // Asignar un mensaje de éxito a Smarty
             $smarty->assign('mensaje', "El curso ha sido dado de alta correctamente.");
@@ -28,10 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // Si los datos no son válidos, mostrar un mensaje de error
-        $smarty->assign('error', "Por favor, complete todos los campos correctamente.");
+        $smarty->assign('error', "Por favor, complete todos los campos correctamente. El ID y el cupo deben ser números.");
     }
 }
 
 // Mostrar la plantilla
 $smarty->display('templates/darAltaCurso.tpl');
+
+
 
