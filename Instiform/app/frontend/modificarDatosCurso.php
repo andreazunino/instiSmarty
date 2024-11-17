@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($cursoId) && !empty($nuevoNombre) && !empty($nuevoCupo)) {
         try {
             // Preparar la consulta para modificar los datos del curso
-            $stmt = $pdo->prepare("UPDATE cursos SET nombre = :nombreCurso, cupo = :cupo WHERE id = :cursoId");
+            $stmt = $pdo->prepare("UPDATE curso SET nombre = :nombreCurso, cupo = :cupo WHERE id = :cursoId");
             $stmt->bindParam(':nombreCurso', $nuevoNombre, PDO::PARAM_STR);
             $stmt->bindParam(':cupo', $nuevoCupo, PDO::PARAM_INT);
             $stmt->bindParam(':cursoId', $cursoId, PDO::PARAM_INT);
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Obtener la lista de cursos para mostrar en el formulario
 try {
-    $stmt = $pdo->query("SELECT id, nombre FROM cursos");
+    $stmt = $pdo->query("SELECT id, nombre FROM curso");
     $cursos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Asignar los cursos a Smarty para mostrarlos en el formulario

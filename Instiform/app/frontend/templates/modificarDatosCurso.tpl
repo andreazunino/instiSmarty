@@ -6,50 +6,49 @@
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
-.logo-small {
-    max-width: 50px;
-    margin-top: 10px;
-}
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+    .logo-small {
+        max-width: 50px;
+        margin-top: 10px;
+    }
 
+    /* Barra de navegación */
+    .navbar {
+        margin-bottom: 20px;
+    }
 
+    .dropdown-menu {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
 
-/* Barra de navegación */
-.navbar {
-    margin-bottom: 20px;
-}
+    .dropdown-item:hover {
+        background-color: #e9ecef;
+    }
 
-.dropdown-menu {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-}
+    /* Botón de cerrar sesión */
+    .btn-logout {
+        background-color: #d33f4d;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 
-.dropdown-item:hover {
-    background-color: #e9ecef;
-}
-/* Botón de cerrar sesión */
-.btn-logout {
-    background-color: #d33f4d;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.btn-logout:hover {
-    background-color: #63597a;
-}
+    .btn-logout:hover {
+        background-color: #63597a;
+    }
 </style>
 
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
@@ -76,6 +75,14 @@
 
 <div class="container text-center">
     <h2>Formulario para Modificar Datos del Curso</h2>
+    
+    <!-- Mostrar alertas -->
+    {if isset($mensaje)}
+        <div class="alert alert-{$mensaje_tipo}" role="alert">
+            {$mensaje}
+        </div>
+    {/if}
+
     <!-- Formulario para modificar los datos del curso -->
     <form action="modificarDatosCurso.php" method="POST">
         <div class="form-group">

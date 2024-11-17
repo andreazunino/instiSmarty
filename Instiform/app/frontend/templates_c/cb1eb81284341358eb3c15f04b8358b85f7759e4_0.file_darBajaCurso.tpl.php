@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-10 15:36:57
+/* Smarty version 5.4.0, created on 2024-11-17 15:35:11
   from 'file:templates/darBajaCurso.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_6730c509d32d38_15479905',
+  'unifunc' => 'content_6739ff1fadeca7_45352252',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cb1eb81284341358eb3c15f04b8358b85f7759e4' => 
     array (
       0 => 'templates/darBajaCurso.tpl',
-      1 => 1731249358,
+      1 => 1731854052,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_6730c509d32d38_15479905 (\Smarty\Template $_smarty_tpl) {
+function content_6739ff1fadeca7_45352252 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">

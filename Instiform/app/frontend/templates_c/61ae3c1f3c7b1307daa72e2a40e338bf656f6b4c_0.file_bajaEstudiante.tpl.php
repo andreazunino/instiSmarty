@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-09 17:09:27
+/* Smarty version 5.4.0, created on 2024-11-17 14:53:53
   from 'file:templates/bajaEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_672f8937822745_11753083',
+  'unifunc' => 'content_6739f571d93123_73766767',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '61ae3c1f3c7b1307daa72e2a40e338bf656f6b4c' => 
     array (
       0 => 'templates/bajaEstudiante.tpl',
-      1 => 1731168551,
+      1 => 1731851600,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_672f8937822745_11753083 (\Smarty\Template $_smarty_tpl) {
+function content_6739f571d93123_73766767 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -30,8 +30,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 <body>
 <style>
     body {
-        background: url('fondo.avif') no-repeat center center fixed;
-        background-size: cover;
         background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
@@ -74,6 +72,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
     }
 </style>
 
+<!-- Botón para cerrar sesión -->
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
 <div class="container-fluid text-center welcome-section">
@@ -95,6 +94,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 </nav>
 
 <div class="container text-center">
+    <!-- Formulario para buscar estudiante -->
     <h3>Buscar por Número de Documento</h3>
     <form action="bajaEstudiante.php" method="post">
         <div class="form-group">
@@ -104,11 +104,13 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         <button type="submit" name="buscarDocumento" class="btn btn-danger">Buscar Estudiante</button>
     </form>
 
+    <!-- Mostrar mensaje -->
     <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
         <div class="alert alert-warning mt-3"><?php echo $_smarty_tpl->getValue('mensaje');?>
 </div>
     <?php }?>
 
+    <!-- Mostrar datos del estudiante encontrado -->
     <?php if ((null !== ($_smarty_tpl->getValue('estudiante') ?? null))) {?>
         <h3>Datos del Estudiante</h3>
         <p><strong>DNI:</strong> <?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['dni'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
@@ -120,13 +122,15 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         <p><strong>Email:</strong> <?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
         <form action="bajaEstudiante.php" method="POST">
-            <input type="hidden" name="id_estudiante" value="<?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['id'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+            <!-- Campo oculto con el DNI del estudiante -->
+            <input type="hidden" name="dni_estudiante" value="<?php echo (($tmp = $_smarty_tpl->getValue('estudiante')['dni'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">
             <button type="submit" class="btn btn-danger">Eliminar Estudiante</button>
         </form>
     <?php }?>
 </div>
 
+<!-- Scripts necesarios para Bootstrap -->
 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
 >
@@ -138,5 +142,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 >
 </body>
 </html>
+
 <?php }
 }

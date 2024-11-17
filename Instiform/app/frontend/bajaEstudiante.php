@@ -34,31 +34,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // Eliminar estudiante
-    if (isset($_POST['id_estudiante'])) {
-        $idEstudiante = $_POST['id_estudiante'];
+    if (isset($_POST['dni_estudiante'])) {
+        $dniEstudiante = trim($_POST['dni_estudiante']); // Obtenemos el DNI correctamente
         
-        if (!empty($idEstudiante)) {
+        if (!empty($dniEstudiante)) {
             try {
-                // Cambia "id" por el nombre correcto de la columna si es necesario
-                $query = "DELETE FROM estudiantes WHERE id = ?";
+                // Eliminar el estudiante por DNI
+                $query = "DELETE FROM estudiantes WHERE dni = ?";
                 $stmt = $pdo->prepare($query);
-                $stmt->execute([$idEstudiante]);
+                $stmt->execute([$dniEstudiante]);
                 
                 if ($stmt->rowCount() > 0) {
                     $smarty->assign('mensaje', "Estudiante eliminado con éxito");
+                    $smarty->assign('estudiante', null); // Limpiar la información del estudiante
                 } else {
-                    $smarty->assign('mensaje', "No se pudo eliminar el estudiante o el ID no existe.");
+                    $smarty->assign('mensaje', "No se pudo eliminar el estudiante o el DNI no existe.");
                 }
             } catch (PDOException $e) {
                 $smarty->assign('mensaje', "Error al eliminar el estudiante: " . $e->getMessage());
             }
         } else {
-            $smarty->assign('mensaje', "ID del estudiante no proporcionado");
+            $smarty->assign('mensaje', "DNI del estudiante no proporcionado");
         }
     }
 }
 
-
+// Mostrar la plantilla
 $smarty->display('templates/bajaEstudiante.tpl');
-
-

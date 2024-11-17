@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-09 17:30:11
+/* Smarty version 5.4.0, created on 2024-11-17 15:19:38
   from 'file:templates/modificarEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_672f8e13ca95e3_58737619',
+  'unifunc' => 'content_6739fb7aa857f6_87026579',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f6df2877c5622c2a38989b25ff290dd1eb7807c7' => 
     array (
       0 => 'templates/modificarEstudiante.tpl',
-      1 => 1731169786,
+      1 => 1731853160,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_672f8e13ca95e3_58737619 (\Smarty\Template $_smarty_tpl) {
+function content_6739fb7aa857f6_87026579 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -30,7 +30,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 <body>
 <style>
     body {
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+        background: url('fondo.avif') no-repeat center center fixed;
+        background-size: cover;
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
         min-height: 100vh;
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -51,6 +53,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         font-weight: bold;
         text-transform: uppercase;
         border-radius: 50px;
+        transition: background-color 0.3s ease;
         position: absolute;
         top: 20px;
         right: 20px;
@@ -64,11 +67,31 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         border: none;
         padding: 15px 30px;
         font-size: 18px;
+        font-weight: bold;
         text-transform: uppercase;
         border-radius: 50px;
+        transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover {
+        background-color: #357ABD;
     }
     .container {
         margin-top: 30px;
+    }
+    .welcome-section img {
+        margin: 10px 0;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-control {
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .alert {
+        border-radius: 10px;
+        padding: 15px;
     }
 </style>
 
@@ -80,13 +103,31 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto d-flex">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                    Volver al Menú Administrador
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <div class="container text-center">
-    <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
-        <div class="alert alert-warning mt-3"><?php echo $_smarty_tpl->getValue('mensaje');?>
-</div>
+    <!-- Mostrar mensajes de éxito o error -->
+    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
+        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
+ alert-dismissible fade show" role="alert">
+            <?php echo $_smarty_tpl->getValue('mensaje');?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     <?php }?>
 
     <?php if ((null !== ($_smarty_tpl->getValue('estudiante') ?? null))) {?>
@@ -120,6 +161,16 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiSmarty\\Instiform\\app\\frontend
         </form>
     <?php }?>
 </div>
+
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
 <?php }
