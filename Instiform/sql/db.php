@@ -4,7 +4,7 @@
 $host = "localhost";
 $port = "5432";
 $dbname = "postgres"; // Nombre de tu base de datos
-$user = "Andrea Zunino"; // Usuario de la base de datos
+$user = "AndreaZunino"; // Usuario de la base de datos
 $password = ""; // Contraseña del usuario
 
 // Establecer conexión

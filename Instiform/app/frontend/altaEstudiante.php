@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($dni) && !empty($nombre) && !empty($apellido) && !empty($email)) {
         try {
             // Insertar el nuevo estudiante en la base de datos
-            $stmt = $pdo->prepare("INSERT INTO estudiantes (dni, nombre, apellido, email) VALUES (:dni, :nombre, :apellido, :email)");
+            $stmt = $pdo->prepare("INSERT INTO estudiante (dni, nombre, apellido, email) VALUES (:dni, :nombre, :apellido, :email)");
             $stmt->bindParam(':dni', $dni);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':apellido', $apellido);

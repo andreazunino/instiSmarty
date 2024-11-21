@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($idCurso) && !empty($dniEstudiante)) {
         try {
             // Verificar si el estudiante ya está inscrito en el curso
-            $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM boletin WHERE id_curso = :idCurso AND dni_estudiante = :dniEstudiante");
+            $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM inscripcion WHERE id_curso = :idCurso AND dni_estudiante = :dniEstudiante");
             $checkStmt->bindParam(':idCurso', $idCurso, PDO::PARAM_INT);
             $checkStmt->bindParam(':dniEstudiante', $dniEstudiante, PDO::PARAM_STR);
             $checkStmt->execute();
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($exists == 0) {
                 // Preparar la consulta para insertar la nueva inscripción
-                $stmt = $pdo->prepare("INSERT INTO boletin (id_curso, dni_estudiante, fecha_inscripcion) VALUES (:idCurso, :dniEstudiante, NOW())");
+                $stmt = $pdo->prepare("INSERT INTO inscripcion (id_curso, dni_estudiante, fecha_inscripcion) VALUES (:idCurso, :dniEstudiante, NOW())");
                 $stmt->bindParam(':idCurso', $idCurso, PDO::PARAM_INT);
                 $stmt->bindParam(':dniEstudiante', $dniEstudiante, PDO::PARAM_STR);
 

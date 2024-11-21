@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2024-11-21 19:00:43
+  from 'file:templates/darBajaCurso.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_673f754b378be6_06407622',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '8270ce6b4c2d20398ae56183fd27c45c6711ed12' => 
+    array (
+      0 => 'templates/darBajaCurso.tpl',
+      1 => 1732212030,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_673f754b378be6_06407622 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 <style>
     body {
@@ -77,9 +103,11 @@
 <!-- Contenedor principal -->
 <div class="container text-center">
     <!-- Mostrar mensajes de éxito o error -->
-    {if isset($mensaje)}
-        <div class="alert alert-{$mensaje_tipo}">{$mensaje}</div>
-    {/if}
+    <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
+        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
+"><?php echo $_smarty_tpl->getValue('mensaje');?>
+</div>
+    <?php }?>
 
     <!-- Formulario para dar de baja un curso -->
     <form action="darBajaCurso.php" method="POST">
@@ -87,9 +115,19 @@
             <label for="curso">Selecciona el Curso:</label>
             <select id="curso" name="curso" class="form-control" required>
                 <option value="">-- Selecciona un curso --</option>
-                {foreach from=$cursos item=curso}
-                    <option value="{$curso.id}">{$curso.nombre} (Cupo: {$curso.cupo})</option>
-                {/foreach}
+                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
+$foreach0DoElse = false;
+?>
+                    <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+ (Cupo: <?php echo $_smarty_tpl->getValue('curso')['cupo'];?>
+)</option>
+                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </select>
         </div>
         <button type="submit" class="btn btn-custom">Dar de Baja</button>
@@ -97,8 +135,16 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
+<?php }
+}

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         try {
             // Verificar el DNI
-            $query = "SELECT * FROM estudiantes WHERE dni = ?";
+            $query = "SELECT * FROM estudiante WHERE dni = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$dni]);
             $estudiante = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($dniEstudiante)) {
             try {
                 // Eliminar el estudiante por DNI
-                $query = "DELETE FROM estudiantes WHERE dni = ?";
+                $query = "DELETE FROM estudiante WHERE dni = ?";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute([$dniEstudiante]);
                 
