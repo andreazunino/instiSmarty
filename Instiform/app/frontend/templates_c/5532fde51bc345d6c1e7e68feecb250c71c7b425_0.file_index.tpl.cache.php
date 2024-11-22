@@ -1,35 +1,31 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-21 17:23:42
+/* Smarty version 5.4.0, created on 2024-11-22 16:19:27
   from 'file:templates/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_673f5e8ec47f19_90991566',
+  'unifunc' => 'content_6740a0ffe20c31_38701313',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5532fde51bc345d6c1e7e68feecb250c71c7b425' => 
     array (
       0 => 'templates/index.tpl',
-      1 => 1730295800,
+      1 => 1732288718,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_673f5e8ec47f19_90991566 (\Smarty\Template $_smarty_tpl) {
+function content_6740a0ffe20c31_38701313 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
-$_smarty_tpl->getCompiled()->nocache_hash = '405696232673f5e8e68a871_23849558';
+$_smarty_tpl->getCompiled()->nocache_hash = '8405662066740a0ff8324a8_54271230';
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
-<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
-?>
 
 <head>
     <!-- Incluye el archivo CSS de Bootstrap -->
@@ -38,51 +34,59 @@ $_smarty_tpl->getCompiled()->nocache_hash = '405696232673f5e8e68a871_23849558';
     <!-- Incluye tu archivo de estilos personalizados -->
     <style>
     body {
-    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
-.welcome-heading {
-    font-size: 36px;
-    font-weight: bold;
-    color: #343a40;
-    margin-top: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Arial', sans-serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
 
-/* Botón de login personalizado */
-.btn-custom {
-    background-color: #4a90e2;
-    color: #ffffff;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-}
-.btn-custom:hover {
-    background-color: #357abd;
-}
+    .welcome-heading {
+        font-size: 36px;
+        font-weight: bold;
+        color: #343a40;
+        margin-top: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: 'Arial', sans-serif;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-/* Estilo del modal */
-.modal-content {
-    border-radius: 15px;
-}
+    /* Botón de login personalizado */
+    .btn-custom {
+        background-color: #4a90e2;
+        color: #ffffff;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+    }
 
-/* Centrar contenido de bienvenida */
-.container-welcome {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
+    .btn-custom:hover {
+        background-color: #357abd;
+    }
+
+    /* Estilo del modal */
+    .modal-content {
+        border-radius: 15px;
+    }
+
+    /* Centrar contenido de bienvenida */
+    .container-welcome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    /* Estilos del formulario */
+    #admin-login-form {
+        margin-top: 20px;
+        display: none;
+    }
     </style>
 </head>
 
@@ -106,7 +110,18 @@ $_smarty_tpl->getCompiled()->nocache_hash = '405696232673f5e8e68a871_23849558';
                 </div>
                 <div class="modal-body">
                     <button id="btn-estudiante" onclick="window.location.href='menuEstudiante.php'" class="btn btn-primary btn-block">Soy Estudiante</button>
-                    <button id="btn-administrador" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='menuAdministrador.php'">Soy Administrador</button>
+                    <button id="btn-administrador" class="btn btn-secondary btn-block mt-2" onclick="showAdminLoginForm()">Soy Administrador</button>
+                    
+                    <!-- Formulario de inicio de sesión para administrador (oculto por defecto) -->
+                    <div id="admin-login-form">
+                        <form id="admin-login">
+                            <div class="form-group">
+                                <label for="admin-password">Contraseña</label>
+                                <input type="password" id="admin-password" class="form-control" placeholder="Ingresa tu contraseña">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,9 +137,33 @@ $_smarty_tpl->getCompiled()->nocache_hash = '405696232673f5e8e68a871_23849558';
     <?php echo '<script'; ?>
  src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
+
     <?php echo '<script'; ?>
- src="funciones.js"><?php echo '</script'; ?>
-> 
+>
+    function showAdminLoginForm() {
+        // Ocultar el botón de administrador y mostrar el formulario de inicio de sesión
+        document.getElementById('btn-administrador').style.display = 'none';
+        document.getElementById('admin-login-form').style.display = 'block';
+    }
+
+    document.getElementById('admin-login').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+        
+        // Obtener la contraseña del formulario
+        var password = document.getElementById('admin-password').value;
+        
+        // Aquí puedes validar la contraseña. Por ejemplo, usando una contraseña fija.
+        // En producción, deberías verificar la contraseña con un servidor de forma segura.
+        if (password === 'admin123') {
+            // Redirigir a la página de administración si la contraseña es correcta
+            window.location.href = 'menuAdministrador.php';
+        } else {
+            // Si la contraseña es incorrecta, muestra un mensaje de error
+            alert('Contraseña incorrecta');
+        }
+    });
+    <?php echo '</script'; ?>
+>
 </body>
 
 </html>
