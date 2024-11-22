@@ -40,7 +40,7 @@ $stmt->execute($params);
 $inscripciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Asignar resultados a Smarty
-$smarty->assign('inscripcion', $inscripciones);
+$smarty->assign('inscripciones', $inscripciones);
 
 // Mostrar la plantilla
 $smarty->display('templates/listarInscripciones.tpl');

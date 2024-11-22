@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-22 15:29:24
+/* Smarty version 5.4.0, created on 2024-11-22 19:27:53
   from 'file:templates/borrarInscripcion.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_674095448fb446_64064169',
+  'unifunc' => 'content_6740cd29c1e289_76442585',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a414c07d696dc4a98764ed6fbc58a1d77df84df3' => 
     array (
       0 => 'templates/borrarInscripcion.tpl',
-      1 => 1732285761,
+      1 => 1732300054,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_674095448fb446_64064169 (\Smarty\Template $_smarty_tpl) {
+function content_6740cd29c1e289_76442585 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -30,6 +30,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
 <body>
 <style>
     body {
+        background: url('fondo.avif') no-repeat center center fixed;
+        background-size: cover;
         background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
@@ -70,66 +72,72 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
         border-radius: 50px;
         transition: background-color 0.3s ease;
     }
-    .welcome-section {
-        margin-top: 20px;
-    }
-    .welcome-heading {
-        font-size: 24px;
-        color: #333;
-        font-weight: bold;
+    .btn-custom:hover {
+        background-color: #357ABD;
     }
 </style>
 
-<!-- Botón para cerrar sesión -->
+<!-- Botón de cerrar sesión -->
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
+<!-- Encabezado con logo y título -->
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Eliminar Inscripción</h1>
+    <h1 class="welcome-heading">Borrar Inscripción</h1>
 </div>
 
+<!-- Menú de navegación -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
+        <ul class="navbar-nav mx-auto d-flex">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                    Volver al Menú Administrador
+                </a>
             </li>
         </ul>
     </div>
 </nav>
 
+<!-- Contenedor principal -->
 <div class="container text-center">
-    <!-- Formulario para buscar inscripciones -->
-    <h3>Buscar Inscripción para Borrar</h3>
-    <form method="POST" action="borrarInscripcion.php">
-        <div class="form-group">
-            <label for="dniAlumno">DNI del Alumno:</label>
-            <input type="text" class="form-control" id="dniAlumno" name="dniAlumno" placeholder="Ingrese el DNI del alumno" value="<?php echo $_smarty_tpl->getValue('dniAlumno');?>
-">
-        </div>
-        <button type="submit" class="btn btn-custom mt-3">Buscar</button>
-    </form>
-
-    <!-- Mostrar mensaje de éxito o error -->
-    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
-        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
- mt-3"><?php echo $_smarty_tpl->getValue('mensaje');?>
+    <!-- Mostrar mensajes de éxito o error -->
+    <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
+        <div class="alert alert-success"><?php echo $_smarty_tpl->getValue('mensaje');?>
+</div>
+    <?php }?>
+    <?php if ((null !== ($_smarty_tpl->getValue('mensaje_error') ?? null))) {?>
+        <div class="alert alert-danger"><?php echo $_smarty_tpl->getValue('mensaje_error');?>
 </div>
     <?php }?>
 
-    <!-- Mostrar resultados de inscripciones -->
-    <?php if ((null !== ($_smarty_tpl->getValue('inscripciones') ?? null)) && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('inscripciones')) > 0) {?>
-        <h3 class="mt-4">Resultados de Inscripciones</h3>
-        <table class="table table-striped mt-3">
+    <!-- Formulario de búsqueda -->
+    <form method="POST" action="borrarInscripcion.php" class="mb-5">
+        <div class="form-group mb-3">
+            <label for="dniAlumno">DNI del Alumno:</label>
+            <input type="text" class="form-control" id="dniAlumno" name="dniAlumno" placeholder="Ej: 12345678">
+        </div>
+        <div class="form-group mb-3">
+            <label for="nombreMateria">Nombre de la Materia:</label>
+            <input type="text" class="form-control" id="nombreMateria" name="nombreMateria" placeholder="Ej: Matemática">
+        </div>
+        <button type="submit" class="btn btn-custom">Buscar</button>
+    </form>
+
+    <!-- Tabla de resultados -->
+    <?php if ((null !== ($_smarty_tpl->getValue('inscripciones') ?? null))) {?>
+        <h2 class="mb-4">Resultados</h2>
+        <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>DNI Alumno</th>
                     <th>Nombre Alumno</th>
                     <th>Curso</th>
-                    <th>Acción</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -140,6 +148,8 @@ foreach ($_from ?? [] as $_smarty_tpl->getVariable('inscripcion')->value) {
 $foreach0DoElse = false;
 ?>
                     <tr>
+                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['id'];?>
+</td>
                         <td><?php echo $_smarty_tpl->getValue('inscripcion')['dni_estudiante'];?>
 </td>
                         <td><?php echo $_smarty_tpl->getValue('inscripcion')['nombre'];?>
@@ -147,9 +157,12 @@ $foreach0DoElse = false;
                         <td><?php echo $_smarty_tpl->getValue('inscripcion')['curso_nombre'];?>
 </td>
                         <td>
-                            <!-- Botón para borrar inscripción -->
                             <a href="borrarInscripcion.php?id=<?php echo $_smarty_tpl->getValue('inscripcion')['id'];?>
-" class="btn btn-danger btn-sm">Borrar</a>
+" 
+                               class="btn btn-danger btn-sm" 
+                               onclick="return confirm('¿Estás seguro de que deseas eliminar esta inscripción?');">
+                                Borrar
+                            </a>
                         </td>
                     </tr>
                 <?php
@@ -158,11 +171,13 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
     <?php } else { ?>
-        <p>No se encontraron inscripciones con los filtros proporcionados.</p>
+        <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null)) && $_smarty_tpl->getValue('mensaje_tipo') == 'warning') {?>
+            <p class="mt-4 text-warning">No se encontraron inscripciones que coincidan con los criterios.</p>
+        <?php }?>
     <?php }?>
 </div>
 
-<!-- Scripts necesarios para Bootstrap -->
+<!-- Scripts -->
 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
 >
@@ -172,9 +187,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 <?php echo '<script'; ?>
  src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-
 </body>
 </html>
-
 <?php }
 }

@@ -7,14 +7,25 @@ require_once 'lib/smarty/libs/Smarty.class.php';
 $smarty = new Smarty\Smarty;
 
 try {
-    // Verificar si se ha enviado el formulario
+    // Verificar si se quiere eliminar una inscripción
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $idInscripcion = $_GET['id'];
+
+        // Ejecutar la consulta para eliminar
+        $query = "DELETE FROM inscripcion WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([':id' => $idInscripcion]);
+
+        // Asignar un mensaje de éxito
+        $smarty->assign('mensaje', "La inscripción con ID {$idInscripcion} fue eliminada correctamente.");
+        $smarty->assign('mensaje_tipo', 'success');
+    }
+
+    // Verificar si se ha enviado el formulario para buscar inscripciones
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Recoger los valores de los filtros enviados por el formulario
         $dniAlumno = isset($_POST['dniAlumno']) ? trim($_POST['dniAlumno']) : '';
         $nombreMateria = isset($_POST['nombreMateria']) ? trim($_POST['nombreMateria']) : '';
-
-        // Depurar los datos recibidos
-        var_dump($_POST);  // Esto imprimirá los datos enviados por POST
 
         // Validar que al menos uno de los filtros esté presente
         if (empty($dniAlumno) && empty($nombreMateria)) {
@@ -25,9 +36,9 @@ try {
         $query = "SELECT i.id, i.dni_estudiante, i.id_curso, 
                          e.nombre AS nombre, c.nombre AS curso_nombre
                   FROM inscripcion i
-                  JOIN estudiante e ON i.dni_estudiante = e.dni  -- Cambiado aquí
+                  JOIN estudiante e ON i.dni_estudiante = e.dni
                   JOIN curso c ON i.id_curso = c.id
-                  WHERE 1=1";  // Usamos WHERE 1=1 para facilitar la concatenación de condiciones
+                  WHERE 1=1"; // Usamos WHERE 1=1 para facilitar la concatenación de condiciones
 
         // Parámetros de la consulta
         $params = [];
