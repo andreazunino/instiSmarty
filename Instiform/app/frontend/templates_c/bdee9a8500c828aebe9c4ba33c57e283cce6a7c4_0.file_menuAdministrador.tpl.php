@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-21 17:23:48
+/* Smarty version 5.4.0, created on 2024-11-22 19:53:32
   from 'file:templates\menuAdministrador.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_673f5e94425b60_05197660',
+  'unifunc' => 'content_6740d32c5cecc6_54882061',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bdee9a8500c828aebe9c4ba33c57e283cce6a7c4' => 
     array (
       0 => 'templates\\menuAdministrador.tpl',
-      1 => 1730295800,
+      1 => 1732301591,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_673f5e94425b60_05197660 (\Smarty\Template $_smarty_tpl) {
+function content_6740d32c5cecc6_54882061 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -99,7 +99,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
                     <a class="dropdown-item" href="altaEstudiante.php">Dar de Alta</a>
                     <a class="dropdown-item" href="bajaEstudiante.php">Dar de Baja</a>
                     <a class="dropdown-item" href="modificarEstudiante.php">Modificar Datos</a>
-                    <a class="dropdown-item" href="verInscripciones.php">Ver Datos e Inscripciones</a>
+                    <a class="dropdown-item" href="verDatosEstudiante.php">Ver Datos de estudiantes</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

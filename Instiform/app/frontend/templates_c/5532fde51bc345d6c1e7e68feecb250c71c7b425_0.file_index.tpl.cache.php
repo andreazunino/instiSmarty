@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-22 16:19:27
+/* Smarty version 5.4.0, created on 2024-11-22 19:43:59
   from 'file:templates/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_6740a0ffe20c31_38701313',
+  'unifunc' => 'content_6740d0efdae684_91515746',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5532fde51bc345d6c1e7e68feecb250c71c7b425' => 
     array (
       0 => 'templates/index.tpl',
-      1 => 1732288718,
+      1 => 1732300742,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6740a0ffe20c31_38701313 (\Smarty\Template $_smarty_tpl) {
+function content_6740d0efdae684_91515746 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
-$_smarty_tpl->getCompiled()->nocache_hash = '8405662066740a0ff8324a8_54271230';
+$_smarty_tpl->getCompiled()->nocache_hash = '6874969126740d0efd7eaa2_20655164';
 ?>
 <!DOCTYPE html>
 <html lang="es">
