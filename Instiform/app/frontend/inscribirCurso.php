@@ -5,6 +5,8 @@ require_once 'lib/smarty/libs/Smarty.class.php';
 
 $smarty = new Smarty\Smarty;
 
+
+// Manejo del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoger los valores enviados por el formulario
     $idCurso = $_POST['curso'];

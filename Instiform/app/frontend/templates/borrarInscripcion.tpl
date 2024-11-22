@@ -6,7 +6,7 @@
     body {
         background: url('fondo.avif') no-repeat center center fixed;
         background-size: cover;
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -15,7 +15,6 @@
         max-width: 50px;
         margin-top: 10px;
     }
-    /* Barra de navegación */
     .navbar {
         margin-bottom: 20px;
     }
@@ -26,7 +25,6 @@
     .dropdown-item:hover {
         background-color: #e9ecef;
     }
-    /* Botón de cerrar sesión */
     .btn-logout {
         background-color: #d33f4d;
         color: #ffffff;
@@ -72,12 +70,12 @@
     <h2>Borrar Inscripción</h2>
     <form id="borrarForm" method="POST" action="borrarInscripcion.php">
         <div class="form-group">
-            <label for="idCurso">ID Inscripción (opcional):</label>
-            <input type="text" class="form-control" id="idCurso" name="idCurso">
+            <label for="dniAlumno">DNI del Alumno (opcional):</label>
+            <input type="text" class="form-control" id="dniAlumno" name="dniAlumno" placeholder="Ingrese DNI">
         </div>
         <div class="form-group">
-            <label for="nombreCurso">Nombre del Curso (opcional):</label>
-            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso">
+            <label for="nombreMateria">Nombre de la Materia (opcional):</label>
+            <input type="text" class="form-control" id="nombreMateria" name="nombreMateria" placeholder="Ingrese Materia">
         </div>
         <button type="submit" class="btn btn-primary">Buscar Inscripción</button>
     </form>
@@ -87,20 +85,20 @@
     <table class="table table-bordered mt-4">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Estudiante</th>
-                <th>Curso</th>
+                <th>DNI Alumno</th>
+                <th>Nombre del Alumno</th>
+                <th>Materia</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             {foreach from=$inscripciones item=inscripcion}
             <tr>
-                <td>{$inscripcion.id}</td>
-                <td>{$inscripcion.estudiante_nombre}</td>
-                <td>{$inscripcion.curso_nombre}</td>
+                <td>{$inscripcion.dni_alumno}</td>
+                <td>{$inscripcion.nombre_alumno}</td>
+                <td>{$inscripcion.nombre_materia}</td>
                 <td>
-                    <form action="eliminarInscripcion.php" method="POST" style="display:inline;">
+                    <form action="borrarInscripcion.php" method="POST" style="display:inline;">
                         <input type="hidden" name="idInscripcion" value="{$inscripcion.id}">
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </form>
@@ -123,3 +121,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

@@ -1,55 +1,71 @@
 <?php
+// Incluir la conexión a la base de datos y Smarty
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
 $smarty = new Smarty\Smarty;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idCurso = $_POST['idCurso'] ?? null;
-    $nombreCurso = $_POST['nombreCurso'] ?? null;
+// Inicializar variables
+$dniAlumno = isset($_POST['dniAlumno']) ? $_POST['dniAlumno'] : '';
+$nombreMateria = isset($_POST['nombreMateria']) ? $_POST['nombreMateria'] : '';
 
-    try {
-        // Verificar si se ingresó un ID de curso o nombre de curso
-        if (!empty($idCurso)) {
-            // Búsqueda por ID de inscripción
-            $stmt = $pdo->prepare("SELECT i.id, i.dni_estudiante, i.id_curso, e.nombre AS estudiante_nombre, c.nombre AS curso_nombre
-                                   FROM inscripciones i
-                                   JOIN estudiantes e ON i.dni_estudiante = e.dni
-                                   JOIN cursos c ON i.id_curso = c.id
-                                   WHERE i.id = :id");
-            $stmt->bindParam(':id', $idCurso);
-            $stmt->execute();
-        } elseif (!empty($nombreCurso)) {
-            // Búsqueda por nombre del curso
-            $stmt = $pdo->prepare("SELECT i.id, i.dni_estudiante, i.id_curso, e.nombre AS estudiante_nombre, c.nombre AS curso_nombre
-                                   FROM inscripciones i
-                                   JOIN estudiantes e ON i.dni_estudiante = e.dni
-                                   JOIN cursos c ON i.id_curso = c.id
-                                   WHERE c.nombre ILIKE :nombre");
-            $nombreCurso = "%$nombreCurso%"; // Agregar comodines para búsqueda parcial
-            $stmt->bindParam(':nombre', $nombreCurso);
-            $stmt->execute();
-        }
+// Consultar inscripciones si hay filtros (DNI o materia)
+$sql = "SELECT i.id, e.dni AS dni_alumno, e.nombre AS nombre_alumno, c.nombre AS nombre_materia
+        FROM inscripcion i
+        JOIN estudiante e ON i.id_estudiante = e.id  -- Cambié 'estudiante_id' a 'id_estudiante' según la suposición
+        JOIN curso c ON i.curso_id = c.id
+        WHERE 1=1";
 
-        // Obtener los resultados
-        $inscripciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Filtros de búsqueda
+if ($dniAlumno) {
+    $sql .= " AND e.dni = :dniAlumno";
+}
+if ($nombreMateria) {
+    $sql .= " AND c.nombre LIKE :nombreMateria";
+}
 
-        if ($inscripciones) {
-            // Asignar las inscripciones a Smarty para mostrar en la plantilla
-            $smarty->assign('inscripciones', $inscripciones);
-        } else {
-            $mensaje = "No se encontraron inscripciones.";
-            $smarty->assign('mensaje', $mensaje);
-            $smarty->assign('mensaje_tipo', 'warning');
-        }
-        
-    } catch (PDOException $e) {
-        $mensaje = "Error al buscar inscripciones: " . $e->getMessage();
-        $smarty->assign('mensaje', $mensaje);
-        $smarty->assign('mensaje_tipo', 'danger');
+// Preparar la consulta
+//$stmt = $db->prepare($sql);
+
+// Bind parameters
+if ($dniAlumno) {
+    $stmt->bindParam(':dniAlumno', $dniAlumno, PDO::PARAM_STR);
+}
+if ($nombreMateria) {
+    $materia_like = "%$nombreMateria%";
+    $stmt->bindParam(':nombreMateria', $materia_like, PDO::PARAM_STR);
+}
+
+// Ejecutar la consulta
+//$stmt->execute();
+
+// Obtener los resultados
+$inscripciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Verificar si se ha enviado la solicitud de eliminar inscripción
+if (isset($_POST['idInscripcion'])) {
+    $idInscripcion = $_POST['idInscripcion'];
+
+    // Consulta para eliminar la inscripción
+    $delete_sql = "DELETE FROM inscripcion WHERE id = :idInscripcion";
+    $delete_stmt = $db->prepare($delete_sql);
+    $delete_stmt->bindParam(':idInscripcion', $idInscripcion, PDO::PARAM_INT);
+
+    if ($delete_stmt->execute()) {
+        // Mensaje de éxito
+        $mensaje = "Inscripción eliminada correctamente.";
+        $mensaje_tipo = "success";
+    } else {
+        // Mensaje de error
+        $mensaje = "Hubo un error al eliminar la inscripción.";
+        $mensaje_tipo = "danger";
     }
 }
 
+// Asignar las variables al template
+$smarty->assign('inscripciones', $inscripciones);
+$smarty->assign('mensaje', $mensaje ?? '');
+$smarty->assign('mensaje_tipo', $mensaje_tipo ?? '');
+
 // Mostrar la plantilla
 $smarty->display('templates/borrarInscripcion.tpl');
-

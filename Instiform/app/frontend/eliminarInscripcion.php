@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($idInscripcion)) {
         try {
             // Eliminar la inscripción de la base de datos
-            $stmt = $pdo->prepare("DELETE FROM inscripciones WHERE id = :id");
+            $stmt = $pdo->prepare("DELETE FROM inscripcion WHERE id = :id");
             $stmt->bindParam(':id', $idInscripcion);
             $stmt->execute();
 

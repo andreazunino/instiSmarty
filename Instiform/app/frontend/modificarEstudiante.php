@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['dni']) && !empty($_POST['dni']) && !isset($_POST['nombre'])) {
         $documento = $_POST['dni'];
 
-        $query = "SELECT * FROM estudiantes WHERE dni = ?";
+        $query = "SELECT * FROM estudiante WHERE dni = ?";
         try {
             $stmt = $pdo->prepare($query);
             $stmt->execute([$documento]);
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $apellido = $_POST['apellido'];
         $email = $_POST['email'];
 
-        $updateQuery = "UPDATE estudiantes SET nombre = ?, apellido = ?, email = ? WHERE dni = ?";
+        $updateQuery = "UPDATE estudiante SET nombre = ?, apellido = ?, email = ? WHERE dni = ?";
         try {
             $stmt = $pdo->prepare($updateQuery);
             $stmt->execute([$nombre, $apellido, $email, $documento]);
