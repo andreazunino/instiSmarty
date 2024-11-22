@@ -1,47 +1,35 @@
 <?php
-require_once('lib/smarty/libs/Smarty.class.php');
+// Incluir los archivos necesarios
+require_once '../../sql/db.php'; // Conexión a la base de datos
+require_once 'lib/smarty/libs/Smarty.class.php';
 
-$smarty = new Smarty\Smarty;  
+$smarty = new Smarty\Smarty;
 
-// Mostrar errores para depuración
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Conexión a la base de datos
+// Consultar las inscripciones
 try {
-    $pdo = new PDO('pgsql:host=localhost;dbname=nombre_base_datos', 'usuario_real', 'contraseña_real');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $pdo->prepare("
+        SELECT e.dni, e.nombre, e.apellido, c.nombre AS curso
+        FROM inscripcion i
+        JOIN estudiante e ON i.dni_estudiante = e.dni
+        JOIN curso c ON i.id_curso = c.id
+        ORDER BY e.nombre, e.apellido
+    ");
+    $stmt->execute();
+
+    // Obtener los datos
+    $inscripciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($inscripciones) {
+        $smarty->assign('inscripciones', $inscripciones);
+    } else {
+        $smarty->assign('mensaje', "No hay inscripciones registradas.");
+        $smarty->assign('mensaje_tipo', 'warning');
+    }
+
 } catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+    $smarty->assign('mensaje', "Error al obtener las inscripciones: " . $e->getMessage());
+    $smarty->assign('mensaje_tipo', 'danger');
 }
-
-// Obtener los datos del formulario
-$dniEstudiante = $_GET['dniEstudiante'] ?? '';
-$idCurso = $_GET['idCurso'] ?? '';
-
-// Consultar inscripciones
-$query = "SELECT inscripcion.*, estudiantes.nombre, estudiantes.apellido 
-          FROM inscripcion 
-          JOIN estudiante ON inscripcion.dni_estudiante = estudiantes.dni 
-          WHERE 1=1";
-
-$params = [];
-if (!empty($dniEstudiante)) {
-    $query .= " AND inscripcion.dni_estudiante = ?";
-    $params[] = $dniEstudiante;
-}
-if (!empty($idCurso)) {
-    $query .= " AND inscripcion.id_curso = ?";
-    $params[] = $idCurso;
-}
-
-$stmt = $pdo->prepare($query);
-$stmt->execute($params);
-$inscripciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Asignar resultados a Smarty
-$smarty->assign('inscripciones', $inscripciones);
 
 // Mostrar la plantilla
 $smarty->display('templates/listarInscripciones.tpl');
-
