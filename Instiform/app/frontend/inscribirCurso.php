@@ -5,8 +5,6 @@ require_once 'lib/smarty/libs/Smarty.class.php';
 
 $smarty = new Smarty\Smarty;
 
-
-// Manejo del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoger los valores enviados por el formulario
     $idCurso = $_POST['curso'];
@@ -23,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $exists = $checkStmt->fetchColumn();
 
             if ($exists == 0) {
-                // Preparar la consulta para insertar la nueva inscripción
-                $stmt = $pdo->prepare("INSERT INTO inscripcion (id_curso, dni_estudiante, fecha_inscripcion) VALUES (:idCurso, :dniEstudiante, NOW())");
+                // Preparar la consulta para insertar la nueva inscripción sin la fecha de inscripción
+                $stmt = $pdo->prepare("INSERT INTO inscripcion (id_curso, dni_estudiante) VALUES (:idCurso, :dniEstudiante)");
                 $stmt->bindParam(':idCurso', $idCurso, PDO::PARAM_INT);
                 $stmt->bindParam(':dniEstudiante', $dniEstudiante, PDO::PARAM_STR);
 

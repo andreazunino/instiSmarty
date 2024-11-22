@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-21 19:02:59
+/* Smarty version 5.4.0, created on 2024-11-22 15:29:24
   from 'file:templates/borrarInscripcion.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_673f75d3e8aac6_77864243',
+  'unifunc' => 'content_674095448fb446_64064169',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a414c07d696dc4a98764ed6fbc58a1d77df84df3' => 
     array (
       0 => 'templates/borrarInscripcion.tpl',
-      1 => 1730295800,
+      1 => 1732285761,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_673f75d3e8aac6_77864243 (\Smarty\Template $_smarty_tpl) {
+function content_674095448fb446_64064169 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -30,9 +30,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
 <body>
 <style>
     body {
-        background: url('fondo.avif') no-repeat center center fixed;
-        background-size: cover;
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -41,18 +39,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
         max-width: 50px;
         margin-top: 10px;
     }
-    /* Barra de navegación */
     .navbar {
         margin-bottom: 20px;
     }
-    .dropdown-menu {
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-    }
-    .dropdown-item:hover {
-        background-color: #e9ecef;
-    }
-    /* Botón de cerrar sesión */
     .btn-logout {
         background-color: #d33f4d;
         color: #ffffff;
@@ -70,13 +59,33 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
     .btn-logout:hover {
         background-color: #63597a;
     }
+    .btn-custom {
+        background-color: #4a90e2;
+        color: #ffffff;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+    }
+    .welcome-section {
+        margin-top: 20px;
+    }
+    .welcome-heading {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+    }
 </style>
 
+<!-- Botón para cerrar sesión -->
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Borrar Inscripción</h1>
+    <h1 class="welcome-heading">Eliminar Inscripción</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -84,79 +93,76 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto d-flex">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                    Volver al Menú Administrador
-                </a>
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div class="container">
-    <h2>Borrar Inscripción</h2>
-    <form id="borrarForm" method="POST" action="borrarInscripcion.php">
+<div class="container text-center">
+    <!-- Formulario para buscar inscripciones -->
+    <h3>Buscar Inscripción para Borrar</h3>
+    <form method="POST" action="borrarInscripcion.php">
         <div class="form-group">
-            <label for="idCurso">ID Inscripción (opcional):</label>
-            <input type="text" class="form-control" id="idCurso" name="idCurso">
+            <label for="dniAlumno">DNI del Alumno:</label>
+            <input type="text" class="form-control" id="dniAlumno" name="dniAlumno" placeholder="Ingrese el DNI del alumno" value="<?php echo $_smarty_tpl->getValue('dniAlumno');?>
+">
         </div>
-        <div class="form-group">
-            <label for="nombreCurso">Nombre del Curso (opcional):</label>
-            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso">
-        </div>
-        <button type="submit" class="btn btn-primary">Buscar Inscripción</button>
+        <button type="submit" class="btn btn-custom mt-3">Buscar</button>
     </form>
 
-    <?php if ($_smarty_tpl->getValue('inscripciones')) {?>
-    <h2 class="mt-4">Inscripciones Encontradas</h2>
-    <table class="table table-bordered mt-4">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Estudiante</th>
-                <th>Curso</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+    <!-- Mostrar mensaje de éxito o error -->
+    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
+        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
+ mt-3"><?php echo $_smarty_tpl->getValue('mensaje');?>
+</div>
+    <?php }?>
+
+    <!-- Mostrar resultados de inscripciones -->
+    <?php if ((null !== ($_smarty_tpl->getValue('inscripciones') ?? null)) && $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('inscripciones')) > 0) {?>
+        <h3 class="mt-4">Resultados de Inscripciones</h3>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>DNI Alumno</th>
+                    <th>Nombre Alumno</th>
+                    <th>Curso</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('inscripciones'), 'inscripcion');
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('inscripcion')->value) {
 $foreach0DoElse = false;
 ?>
-            <tr>
-                <td><?php echo $_smarty_tpl->getValue('inscripcion')['id'];?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['dni_estudiante'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('inscripcion')['estudiante_nombre'];?>
+                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['nombre'];?>
 </td>
-                <td><?php echo $_smarty_tpl->getValue('inscripcion')['curso_nombre'];?>
+                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['curso_nombre'];?>
 </td>
-                <td>
-                    <form action="eliminarInscripcion.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="idInscripcion" value="<?php echo $_smarty_tpl->getValue('inscripcion')['id'];?>
-">
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-            <?php
+                        <td>
+                            <!-- Botón para borrar inscripción -->
+                            <a href="borrarInscripcion.php?id=<?php echo $_smarty_tpl->getValue('inscripcion')['id'];?>
+" class="btn btn-danger btn-sm">Borrar</a>
+                        </td>
+                    </tr>
+                <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-        </tbody>
-    </table>
-    <?php }?>
-
-    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
-    <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
- mt-3">
-        <?php echo $_smarty_tpl->getValue('mensaje');?>
-
-    </div>
+            </tbody>
+        </table>
+    <?php } else { ?>
+        <p>No se encontraron inscripciones con los filtros proporcionados.</p>
     <?php }?>
 </div>
 
+<!-- Scripts necesarios para Bootstrap -->
 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
 >
@@ -166,7 +172,9 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 <?php echo '<script'; ?>
  src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
+
 </body>
 </html>
+
 <?php }
 }
