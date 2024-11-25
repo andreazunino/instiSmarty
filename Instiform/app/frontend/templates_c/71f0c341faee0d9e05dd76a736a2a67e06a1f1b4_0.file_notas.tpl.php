@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-25 16:07:54
+/* Smarty version 5.4.0, created on 2024-11-25 16:30:17
   from 'file:templates/notas.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_674492ca1a0896_44626661',
+  'unifunc' => 'content_674498098d45b2_58561356',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '71f0c341faee0d9e05dd76a736a2a67e06a1f1b4' => 
     array (
       0 => 'templates/notas.tpl',
-      1 => 1732547262,
+      1 => 1732548610,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_674492ca1a0896_44626661 (\Smarty\Template $_smarty_tpl) {
+function content_674498098d45b2_58561356 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -144,10 +144,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 ">
             <button type="submit" name="ingresar_nota" class="btn btn-success">Guardar Nota</button>
         </form>
-    <?php } else { ?>
-        <?php if ((null !== ($_smarty_tpl->getValue('dniEstudiante') ?? null))) {?>
-            <p>No se encontraron cursos para este estudiante.</p>
-        <?php }?>
+
     <?php }?>
 </div>
 

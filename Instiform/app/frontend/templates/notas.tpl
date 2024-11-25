@@ -105,10 +105,7 @@
             <input type="hidden" name="dni_estudiante" value="{$dniEstudiante}">
             <button type="submit" name="ingresar_nota" class="btn btn-success">Guardar Nota</button>
         </form>
-    {else}
-        {if isset($dniEstudiante)}
-            <p>No se encontraron cursos para este estudiante.</p>
-        {/if}
+
     {/if}
 </div>
 
