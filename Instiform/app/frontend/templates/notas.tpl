@@ -1,123 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
 <body>
-<style>
-    body {
-        background: url('fondo.avif') no-repeat center center fixed;
-        background-size: cover;
-    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
-.logo-small {
-    max-width: 50px;
-    margin-top: 10px;
-}
+    <div class="container mt-5">
+        <h1 class="text-center">Gestión de Notas</h1>
 
+        <!-- Mostrar mensajes -->
+        {if $mensaje}
+            <div class="alert alert-{$mensaje_tipo}">
+                {$mensaje}
+            </div>
+        {/if}
 
+        <!-- Formulario para buscar cursos por DNI -->
+        <form method="POST" class="mb-4">
+            <div class="form-group">
+                <label for="dni_estudiante">DNI del Estudiante:</label>
+                <input type="text" class="form-control" id="dni_estudiante" name="dni_estudiante" value="{$dniEstudiante}" placeholder="Ingrese el DNI del estudiante" required>
+            </div>
+            <button type="submit" name="buscar_dni" class="btn btn-primary">Buscar Cursos</button>
+        </form>
 
-/* Barra de navegación */
-.navbar {
-    margin-bottom: 20px;
-}
-
-.dropdown-menu {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-}
-
-.dropdown-item:hover {
-    background-color: #e9ecef;
-}
-/* Botón de cerrar sesión */
-.btn-logout {
-    background-color: #d33f4d;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.btn-logout:hover {
-    background-color: #63597a;
-}
-</style>
-
-<button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
-
-<div class="container-fluid text-center welcome-section">
-    <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Consultar Notas</h1>
-</div>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto d-flex">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                    Volver al Menú Administrador
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="container">
-    <h2>Consultar Notas</h2>
-    <form id="consultaNotasForm">
-        <div class="form-group">
-            <label for="searchType">Buscar por:</label>
-            <select class="form-control" id="searchType" name="searchType" required>
-                <option value="dni">DNI del Estudiante</option>
-                <option value="curso">ID del Curso</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="searchValue">Número:</label>
-            <input type="text" class="form-control" id="searchValue" name="searchValue" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Buscar</button>
-    </form>
-    <div class="mt-4">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Estudiante</th>
-                    <th>Curso</th>
-                    <th>Nota</th>
-                </tr>
-            </thead>
-            <tbody id="notesTableBody">
-                {if isset($notas)}
-                    {foreach from=$notas item=nota}
-                        <tr>
-                            <td>{$nota.estudiante}</td>
-                            <td>{$nota.curso}</td>
-                            <td>{$nota.nota}</td>
-                        </tr>
+        <!-- Mostrar cursos disponibles -->
+        {if $cursos}
+            <h3 class="mt-4">Cursos del Estudiante</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre del Curso</th>
+                        <th>Nota</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach $cursos as $curso}
+                    <tr>
+                        <td>{$curso.nombre}</td>
+                        <td>
+                            <!-- Formulario para guardar nota -->
+                            <form method="POST" class="form-inline">
+                                <input type="hidden" name="id_curso" value="{$curso.id}">
+                                <input type="hidden" name="dni_estudiante" value="{$dniEstudiante}">
+                                <input type="number" name="nota" class="form-control" min="0" max="10" placeholder="Ingrese nota" required>
+                                <button type="submit" name="guardar_nota" class="btn btn-success ml-2">Guardar</button>
+                            </form>
+                        </td>
+                    </tr>
                     {/foreach}
-                {/if}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        {/if}
     </div>
-</div>
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 </html>
