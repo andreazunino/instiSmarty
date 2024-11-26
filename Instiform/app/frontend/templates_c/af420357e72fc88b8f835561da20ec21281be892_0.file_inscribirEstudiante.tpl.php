@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-26 16:40:57
-  from 'file:templates/inscribirCurso.tpl' */
+/* Smarty version 5.4.0, created on 2024-11-26 15:55:57
+  from 'file:inscribirEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_6745ec09d28110_39394766',
+  'unifunc' => 'content_6745e17d946e67_62674043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8f2cd991c4ae93c6c5afecea0c0c369b2bfeddf1' => 
+    'af420357e72fc88b8f835561da20ec21281be892' => 
     array (
-      0 => 'templates/inscribirCurso.tpl',
-      1 => 1732635652,
+      0 => 'inscribirEstudiante.tpl',
+      1 => 1732306409,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_6745ec09d28110_39394766 (\Smarty\Template $_smarty_tpl) {
+function content_6745e17d946e67_62674043 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -95,7 +95,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-                <a class="nav-link" href="menuEstudiante.php">Volver al Menú Estudiante</a>
+                <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
             </li>
         </ul>
     </div>
@@ -145,9 +145,9 @@ $foreach0DoElse = false;
                     <td>
                         <!-- Botón para inscribir al estudiante -->
                         <form method="POST" class="d-inline">
-                            <input type="hidden" name="dniEstudiante" value="<?php echo $_smarty_tpl->getValue('dniEstudiante');?>
-">
                             <input type="hidden" name="idCurso" value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+">
+                            <input type="hidden" name="dniEstudiante" value="<?php echo $_smarty_tpl->getValue('dniEstudiante');?>
 ">
                             <button type="submit" class="btn btn-success btn-sm">Inscribir</button>
                         </form>

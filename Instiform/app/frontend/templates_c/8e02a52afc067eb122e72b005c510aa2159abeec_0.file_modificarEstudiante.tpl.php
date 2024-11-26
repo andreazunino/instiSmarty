@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-21 20:06:23
+/* Smarty version 5.4.0, created on 2024-11-25 18:44:02
   from 'file:templates/modificarEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_673f84af3a2048_38233905',
+  'unifunc' => 'content_6744b7624b6179_93834799',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8e02a52afc067eb122e72b005c510aa2159abeec' => 
     array (
       0 => 'templates/modificarEstudiante.tpl',
-      1 => 1732206194,
+      1 => 1732556534,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_673f84af3a2048_38233905 (\Smarty\Template $_smarty_tpl) {
+function content_6744b7624b6179_93834799 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">

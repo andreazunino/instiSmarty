@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_estudiante = $_SESSION['id_estudiante']; // Asegúrate de tener la sesión iniciada correctamente
 
             // Preparar la consulta SQL para eliminar la inscripción del estudiante al curso
-            $stmt = $pdo->prepare("DELETE FROM inscripciones WHERE id_estudiante = :id_estudiante AND id_curso = :id_curso");
-            $stmt->bindParam(':id_estudiante', $id_estudiante);
+            $stmt = $pdo->prepare("DELETE FROM inscripcion WHERE dni_estudiante = :dni_estudiante AND id_curso = :id_curso");
+            $stmt->bindParam(':dni_estudiante', $dni_estudiante);
             $stmt->bindParam(':id_curso', $curso_id);
 
             // Ejecutar la consulta

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-21 18:40:25
+/* Smarty version 5.4.0, created on 2024-11-25 20:50:49
   from 'file:templates/listarCursos.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_673f708997f507_26272884',
+  'unifunc' => 'content_6744d5196d3df5_40282851',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6d4e121574a7d0ed45e330ee6d74761ac7030ede' => 
     array (
       0 => 'templates/listarCursos.tpl',
-      1 => 1732206194,
+      1 => 1732564244,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_673f708997f507_26272884 (\Smarty\Template $_smarty_tpl) {
+function content_6744d5196d3df5_40282851 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
