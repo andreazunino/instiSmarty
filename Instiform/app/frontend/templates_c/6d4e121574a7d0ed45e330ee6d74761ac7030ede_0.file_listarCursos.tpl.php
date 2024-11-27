@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-25 20:50:49
+/* Smarty version 5.4.0, created on 2024-11-26 20:04:13
   from 'file:templates/listarCursos.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_6744d5196d3df5_40282851',
+  'unifunc' => 'content_67461bad0e4148_74351668',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6d4e121574a7d0ed45e330ee6d74761ac7030ede' => 
     array (
       0 => 'templates/listarCursos.tpl',
-      1 => 1732564244,
+      1 => 1732647847,
       2 => 'file',
     ),
   ),
@@ -21,10 +21,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_6744d5196d3df5_40282851 (\Smarty\Template $_smarty_tpl) {
+function content_67461bad0e4148_74351668 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
+<meta charset="UTF-8">
 <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?> <!-- Aquí se incluye el archivo head.tpl que puedes configurar con los metadatos comunes -->
 <body>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<meta charset="UTF-8">
 {include 'templates/head.tpl'}
 <body>
 <style>

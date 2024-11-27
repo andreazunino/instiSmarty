@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-<meta charset="UTF-8">
-{include 'templates/head.tpl'} <!-- Aquí se incluye el archivo head.tpl que puedes configurar con los metadatos comunes -->
+<head>
+    <meta charset="UTF-8">
+    {include 'templates/head.tpl'}
+    <title>Boletín del Estudiante</title>
+</head>
 <body>
     <style>
         body {
             background: url('fondo.avif') no-repeat center center fixed;
             background-size: cover;
-            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
             min-height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -15,9 +18,6 @@
         .logo-small {
             max-width: 50px;
             margin-top: 10px;
-        }
-        .navbar {
-            margin-bottom: 20px;
         }
         .btn-logout {
             background-color: #d33f4d;
@@ -53,55 +53,70 @@
 
     <div class="container-fluid text-center welcome-section">
         <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-        <h1 class="welcome-heading">Listado de Cursos</h1>
+        <h1 class="welcome-heading">Boletín de Calificaciones</h1>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto d-flex">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                        Volver al Menú Administrador
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="menuAdministrador.php">Volver al Menú Administrador</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container text-center">
+    <div class="container">
+        <h2>Boletín de {if $estudiante.nombre}{$estudiante.nombre} {$estudiante.apellido}{/if}</h2>
+        
         <!-- Mostrar mensajes de éxito o error -->
         {if $mensaje}
             <div class="alert alert-{$mensaje_tipo} alert-dismissible fade show" role="alert">
-                {$mensaje}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+               {$mensaje}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
             </div>
         {/if}
 
-        {if $cursos|@count > 0}
-            <table class="table table-bordered table-striped">
-                <thead>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Calificación</th>
+                    <th>Fecha de Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$boletin item=nota}
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre del Curso</th>
+                        <td>{$nota.curso}</td>
+                        <td>{$nota.calificacion}</td>
+                        <td>{$nota.fecha_calificacion}</td>
                     </tr>
-                </thead>
-                <tbody>
+                {/foreach}
+            </tbody>
+        </table>
+
+        <form action="guardarBoletin.php" method="POST">
+            <input type="hidden" name="id_estudiante" value="{$estudiante.id}">
+            
+            <div class="form-group">
+                <label for="curso">Curso:</label>
+                <select class="form-control" id="curso" name="curso" required>
                     {foreach from=$cursos item=curso}
-                        <tr>
-                            <td>{$curso.id}</td>
-                            <td>{$curso.nombre}</td>
-                        </tr>
+                        <option value="{$curso.id}">{$curso.nombre}</option>
                     {/foreach}
-                </tbody>
-            </table>
-        {else}
-            <p>No hay cursos disponibles.</p>
-        {/if}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="calificacion">Calificación:</label>
+                <input type="number" class="form-control" id="calificacion" name="calificacion" min="0" max="10" required>
+            </div>
+
+            <button type="submit" class="btn btn-custom">Guardar Calificación</button>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
