@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-29 16:23:44
+/* Smarty version 5.4.0, created on 2024-11-29 20:52:45
   from 'file:templates/boletin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_6749dc80abe3a5_90408213',
+  'unifunc' => 'content_674a1b8d357a74_94263213',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f77487a5e4f317332963d46cbb650b862b569c88' => 
     array (
       0 => 'templates/boletin.tpl',
-      1 => 1732893759,
+      1 => 1732909961,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_6749dc80abe3a5_90408213 (\Smarty\Template $_smarty_tpl) {
+function content_674a1b8d357a74_94263213 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -31,61 +31,104 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
 <body>
 <style>
     body {
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
-        font-family: Arial, sans-serif;
+        background: url('fondo.avif') no-repeat center center fixed;
+        background-size: cover;
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
     }
-    .container {
-        margin-top: 50px;
-        max-width: 600px;
-        background: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .logo-small {
+        max-width: 50px;
+        margin-top: 10px;
+    }
+    .navbar {
+        margin-bottom: 20px;
+    }
+    .btn-logout {
+        background-color: #d33f4d;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .btn-logout:hover {
+        background-color: #63597a;
     }
     .btn-custom {
         background-color: #4a90e2;
         color: #ffffff;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
         border-radius: 50px;
         transition: background-color 0.3s ease;
     }
-    .btn-custom:hover {
-        background-color: #357abd;
+    .container-fluid {
+        margin-top: 20px;
     }
     .table {
-        width: 100%;
         margin-top: 20px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .table thead {
+        background-color: #4a90e2;
+        color: #ffffff;
+    }
+    .form-group label {
+        font-weight: bold;
     }
 </style>
 
-<div class="container">
-    <h2 class="text-center">Consulta de Boletín</h2>
+<button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
-    <!-- Mostrar mensajes -->
-    <?php if ($_smarty_tpl->getValue('mensaje')) {?>
-        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
-" role="alert">
-            <?php echo $_smarty_tpl->getValue('mensaje');?>
+<div class="container-fluid text-center welcome-section">
+    <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
+    <h1 class="welcome-heading">Consultar Boletín de Calificaciones</h1>
+</div>
 
-        </div>
-    <?php }?>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto d-flex">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="menuEstudiante.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                    Volver al Menú Estudiante
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Formulario para ingresar el DNI -->
-    <form action="boletin.php" method="POST">
+<div class="container text-center">
+
+    <form method="POST" action="">
         <div class="form-group">
-            <label for="dni">Ingrese su DNI:</label>
+            <label for="dni">Ingrese el DNI del estudiante:</label>
             <input type="text" class="form-control" id="dni" name="dni" required pattern="\d+" title="Solo se permiten números">
         </div>
-        <button type="submit" class="btn btn-custom">Consultar</button>
+        <button type="submit" class="btn btn-custom">Buscar</button>
     </form>
 
-    <!-- Tabla de resultados -->
-    <!-- Tabla de resultados -->
-    <?php if ($_smarty_tpl->getValue('notas')) {?>
-        <h3 class="text-center">Resultados</h3>
-        <table class="table table-bordered">
+    <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('notas')) > 0) {?>
+        <h2>Calificaciones</h2>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Materia</th>
@@ -99,20 +142,47 @@ $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('nota')->value) {
 $foreach0DoElse = false;
 ?>
-                <tr>
-                    <td><?php echo $_smarty_tpl->getValue('nota')['materia'];?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->getValue('nota')['materia'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->getValue('nota')['calificacion'];?>
-</td>
-                </tr>
+                        <td>
+                            <?php if (is_array($_smarty_tpl->getValue('nota')['calificacion'])) {?>
+                                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('nota')['calificacion'], 'cal');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('cal')->value) {
+$foreach1DoElse = false;
+?>
+                                    <?php echo $_smarty_tpl->getValue('cal');?>
+ 
+                                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                            <?php } else { ?>
+                                <?php echo $_smarty_tpl->getValue('nota')['calificacion'];?>
+
+                            <?php }?>
+                        </td>
+                    </tr>
                 <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
+    <?php } else { ?>
+        <p>No se encontraron calificaciones para el DNI ingresado.</p>
     <?php }?>
-    
 </div>
+
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
 <?php }

@@ -1,5 +1,5 @@
 <?php
-require_once '../../sql/db.php'; // Conexión a la base de datos
+require_once '../../sql/db.php';
 require_once 'lib/smarty/libs/Smarty.class.php';
 
 $smarty = new Smarty\Smarty;
@@ -7,34 +7,36 @@ $smarty = new Smarty\Smarty;
 $mensaje = '';
 $mensaje_tipo = '';
 
-// Si el formulario fue enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dni = filter_input(INPUT_POST, 'dni', FILTER_SANITIZE_NUMBER_INT);
 
     if ($dni) {
         try {
-            // Consulta SQL para obtener las notas del estudiante
             $sql = "
                 SELECT 
                     c.nombre AS materia,
-                    i.calificacion 
+                    COALESCE(b.notas::TEXT, '[]') AS calificacion
                 FROM 
-                    inscripcion i
+                    boletin b
                 INNER JOIN 
-                    curso c ON i.id_curso = c.id
+                    curso c ON b.id_curso = c.id
                 WHERE 
-                    i.dni_estudiante = :dni
+                    b.dni_estudiante = :dni
             ";
 
-            $stmt = $db->prepare($sql);
+            $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':dni', $dni);
             $stmt->execute();
             $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            // Decodificar calificaciones JSON
+            foreach ($resultados as &$resultado) {
+                $resultado['calificacion'] = json_decode($resultado['calificacion'], true) ?: "Sin calificación";
+            }
+
             if ($resultados) {
-                // Asignar los resultados al template
                 $smarty->assign('notas', $resultados);
-                $mensaje = ""; // Limpiar mensaje
+                $mensaje = "";
             } else {
                 $mensaje = "No se encontraron boletines para el DNI ingresado.";
                 $mensaje_tipo = 'warning';
@@ -49,10 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mensaje_tipo = 'warning';
     }
 
-    // Asignar mensajes al template
     $smarty->assign('mensaje', $mensaje);
     $smarty->assign('mensaje_tipo', $mensaje_tipo);
 }
 
-// Mostrar la plantilla
+$smarty->clearAllCache();
 $smarty->display('templates/boletin.tpl');
