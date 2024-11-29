@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-27 15:23:17
+/* Smarty version 5.4.0, created on 2024-11-29 15:25:13
   from 'file:templates\menuEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67472b550c6d46_77715545',
+  'unifunc' => 'content_6749cec96c69e7_15185729',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6acc34b73b667ea990baa4d6ee111e72e1aec3c9' => 
     array (
       0 => 'templates\\menuEstudiante.tpl',
-      1 => 1732717379,
+      1 => 1732890298,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_67472b550c6d46_77715545 (\Smarty\Template $_smarty_tpl) {
+function content_6749cec96c69e7_15185729 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -97,9 +97,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
                     Cursos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href=".\inscribirCurso.php">Inscribirse a curso</a>
-                    <a class="dropdown-item" href=". \anularInscripcion.php">Anular inscripción a curso</a>
-                    <a class="dropdown-item" href=". \boletin.php">Ver Boletin</a>
+                    <a class="dropdown-item" href="inscribirCurso.php">Inscribirse a curso</a>
+                    <a class="dropdown-item" href="anularInscripcion.php">Anular inscripción a curso</a>
+                    <a class="dropdown-item" href="boletin.php">Ver Boletin</a>
                 </div>
             </li>
         </ul>

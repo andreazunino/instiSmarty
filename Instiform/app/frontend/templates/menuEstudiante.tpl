@@ -71,9 +71,9 @@
                     Cursos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href=".\inscribirCurso.php">Inscribirse a curso</a>
-                    <a class="dropdown-item" href=". \anularInscripcion.php">Anular inscripción a curso</a>
-                    <a class="dropdown-item" href=". \boletin.php">Ver Boletin</a>
+                    <a class="dropdown-item" href="inscribirCurso.php">Inscribirse a curso</a>
+                    <a class="dropdown-item" href="anularInscripcion.php">Anular inscripción a curso</a>
+                    <a class="dropdown-item" href="boletin.php">Ver Boletin</a>
                 </div>
             </li>
         </ul>

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-11-27 16:29:51
+/* Smarty version 5.4.0, created on 2024-11-29 16:22:49
   from 'file:templates/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67473aef943e04_37941727',
+  'unifunc' => 'content_6749dc490dc493_81904007',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ))) {
-function content_67473aef943e04_37941727 (\Smarty\Template $_smarty_tpl) {
+function content_6749dc490dc493_81904007 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
