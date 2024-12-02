@@ -1,9 +1,7 @@
 <?php
-// Incluir la conexión a la base de datos y Smarty
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
-// Crear instancia de Smarty
 $smarty = new Smarty\Smarty;
 
 try {
@@ -81,5 +79,5 @@ try {
     $smarty->assign('mensaje_tipo', 'danger');
 }
 
-// Mostrar la plantilla de Smarty
+
 $smarty->display('templates/borrarInscripcion.tpl');

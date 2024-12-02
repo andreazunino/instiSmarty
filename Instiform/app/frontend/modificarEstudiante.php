@@ -48,5 +48,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Mostrar la plantilla
 $smarty->display('templates/modificarEstudiante.tpl');

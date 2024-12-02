@@ -43,5 +43,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $smarty->assign('mensaje_tipo', $mensaje_tipo);
 }
 
-// Mostrar la plantilla
+
 $smarty->display('templates/altaEstudiante.tpl');

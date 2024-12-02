@@ -1,9 +1,7 @@
 <?php
-// Incluir los archivos necesarios
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
-// Inicializar Smarty
 $smarty = new Smarty\Smarty;
 
 // Obtener la lista de cursos desde la base de datos
@@ -33,5 +31,5 @@ try {
 $smarty->assign('mensaje', $mensaje ?? null);
 $smarty->assign('mensaje_tipo', $mensaje_tipo ?? 'info');
 
-// Mostrar la plantilla con los cursos
+
 $smarty->display('templates/listarCursos.tpl');

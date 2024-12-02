@@ -1,5 +1,4 @@
 <?php
-// Incluir la conexión a la base de datos y Smarty
 require_once '../../sql/db.php';
 require_once 'lib/smarty/libs/Smarty.class.php';
 
@@ -71,6 +70,6 @@ $smarty->assign('dniEstudiante', $dniEstudiante);
 $smarty->assign('mensaje', $mensaje);
 $smarty->assign('mensaje_tipo', $mensaje_tipo);
 
-// Mostrar la plantilla
+
 $smarty->display('templates/notas.tpl');
 

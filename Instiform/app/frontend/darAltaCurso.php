@@ -1,9 +1,7 @@
 <?php
-// Incluir archivos necesarios
 require_once('lib/smarty/libs/Smarty.class.php');
 require_once('../../sql/db.php'); // Conexión a la base de datos
 
-// Crear instancia de Smarty
 $smarty = new Smarty\Smarty;
 
 // Verificar si se ha enviado el formulario
@@ -35,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Mostrar la plantilla
+
 $smarty->display('templates/darAltaCurso.tpl');
 
 

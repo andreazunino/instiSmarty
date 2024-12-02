@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-12-02 13:55:54
-  from 'file:templates/anularInscripcion.tpl' */
+/* Smarty version 5.4.0, created on 2024-12-02 14:01:13
+  from 'file:templates/modificarDatosCurso.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_674dae5a95ee24_63492923',
+  'unifunc' => 'content_674daf99ea1ab3_19221439',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a6ba699f73da26adfcbe3cc2134d114efed336d7' => 
+    '51489817e6417970ec80bb7181c0d74573655bf5' => 
     array (
-      0 => 'templates/anularInscripcion.tpl',
-      1 => 1732912639,
+      0 => 'templates/modificarDatosCurso.tpl',
+      1 => 1732206194,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,10 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_674dae5a95ee24_63492923 (\Smarty\Template $_smarty_tpl) {
+function content_674daf99ea1ab3_19221439 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
-<meta charset="UTF-8">
 <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 <body>
@@ -42,9 +41,22 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
         max-width: 50px;
         margin-top: 10px;
     }
+
+    /* Barra de navegación */
     .navbar {
         margin-bottom: 20px;
     }
+
+    .dropdown-menu {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .dropdown-item:hover {
+        background-color: #e9ecef;
+    }
+
+    /* Botón de cerrar sesión */
     .btn-logout {
         background-color: #d33f4d;
         color: #ffffff;
@@ -59,32 +71,19 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
         top: 20px;
         right: 20px;
     }
+
     .btn-logout:hover {
         background-color: #63597a;
     }
-    .btn-custom {
-        background-color: #4a90e2;
-        color: #ffffff;
-        border: none;
-        padding: 15px 30px;
-        font-size: 18px;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 50px;
-        transition: background-color 0.3s ease;
-    }
 </style>
 
-<!-- Botón de cierre de sesión -->
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
-<!-- Encabezado -->
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Consultar y Anular Inscripción en Cursos</h1>
+    <h1 class="welcome-heading">Modificar Datos del Curso</h1>
 </div>
 
-<!-- Menú de navegación -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -92,17 +91,18 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="menuEstudiante.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                    Volver al Menú Estudiante
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                    Volver al Menú Administrador
                 </a>
             </li>
         </ul>
     </div>
 </nav>
 
-<!-- Contenido principal -->
 <div class="container text-center">
-    <!-- Mensaje de éxito o error -->
+    <h2>Formulario para Modificar Datos del Curso</h2>
+    
+    <!-- Mostrar alertas -->
     <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
         <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
 " role="alert">
@@ -111,67 +111,45 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
         </div>
     <?php }?>
 
-    <!-- Formulario para buscar boletín -->
-    <form method="POST" action="">
+    <!-- Formulario para modificar los datos del curso -->
+    <form action="modificarDatosCurso.php" method="POST">
         <div class="form-group">
-            <label for="dni">Ingrese el DNI del estudiante:</label>
-            <input type="text" class="form-control" id="dni" name="dni" required pattern="\d+" title="Solo se permiten números">
-        </div>
-        <button type="submit" class="btn btn-custom">Buscar</button>
-    </form>
-
-    <!-- Mostrar tabla o mensaje según los resultados -->
-    <?php if ((null !== ($_smarty_tpl->getValue('cursos') ?? null))) {?>
-        <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cursos')) > 0) {?>
-            <h2>Cursos en los que estás inscrito</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Curso</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+            <label for="curso">Seleccionar Curso:</label>
+            <select class="form-control" id="curso" name="curso" onchange="loadCourseDetails()" required>
+                <!-- Opciones llenadas por PHP -->
+                <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
 $foreach0DoElse = false;
 ?>
-                        <tr>
-                            <td><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
-</td>
-                            <td>
-                                <form method="POST" action="">
-                                    <input type="hidden" name="dniEstudiante" value="<?php echo $_smarty_tpl->getValue('dniEstudiante');?>
-">
-                                    <input type="hidden" name="idCursoAnular" value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
-">
-                                    <button type="submit" class="btn btn-danger">Anular Inscripción</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php
+                    <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+</option>
+                <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                </tbody>
-            </table>
-        <?php } else { ?>
-            <p>No estás inscrito en ningún curso.</p>
-        <?php }?>
-    <?php }?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nombreCurso">Nuevo Nombre del Curso:</label>
+            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" required>
+        </div>
+        <div class="form-group">
+            <label for="cupo">Nuevo Cupo:</label>
+            <input type="number" class="form-control" id="cupo" name="cupo" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Modificar Curso</button>
+    </form>
 </div>
 
-<!-- Scripts -->
 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
- src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
->
+
 </body>
 </html>
 <?php }

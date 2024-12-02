@@ -1,5 +1,4 @@
 <?php
-// Incluir los archivos necesarios
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
@@ -87,5 +86,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idCurso'], $_POST['dn
     }
 }
 
-// Mostrar la plantilla
+
 $smarty->display('templates/inscribirCurso.tpl');

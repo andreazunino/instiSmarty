@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2024-12-02 13:55:54
-  from 'file:templates/anularInscripcion.tpl' */
+/* Smarty version 5.4.0, created on 2024-12-02 14:00:06
+  from 'file:templates/darBajaCurso.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_674dae5a95ee24_63492923',
+  'unifunc' => 'content_674daf56b3d043_17556269',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a6ba699f73da26adfcbe3cc2134d114efed336d7' => 
+    '8270ce6b4c2d20398ae56183fd27c45c6711ed12' => 
     array (
-      0 => 'templates/anularInscripcion.tpl',
-      1 => 1732912639,
+      0 => 'templates/darBajaCurso.tpl',
+      1 => 1732546928,
       2 => 'file',
     ),
   ),
@@ -21,19 +21,16 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_674dae5a95ee24_63492923 (\Smarty\Template $_smarty_tpl) {
+function content_674daf56b3d043_17556269 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
-<meta charset="UTF-8">
 <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 <body>
 <style>
     body {
-        background: url('fondo.avif') no-repeat center center fixed;
-        background-size: cover;
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
+        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
         min-height: 100vh;
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -73,15 +70,18 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
         border-radius: 50px;
         transition: background-color 0.3s ease;
     }
+    .btn-custom:hover {
+        background-color: #357ABD;
+    }
 </style>
 
-<!-- Botón de cierre de sesión -->
+<!-- Botón de cerrar sesión -->
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
-<!-- Encabezado -->
+<!-- Encabezado con logo y título -->
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Consultar y Anular Inscripción en Cursos</h1>
+    <h1 class="welcome-heading">Dar de Baja Curso</h1>
 </div>
 
 <!-- Menú de navegación -->
@@ -92,74 +92,46 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform nuevo\\instiSmarty\\Instifo
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto d-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="menuEstudiante.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                    Volver al Menú Estudiante
+                <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                    Volver al Menú Administrador
                 </a>
             </li>
         </ul>
     </div>
 </nav>
 
-<!-- Contenido principal -->
+<!-- Contenedor principal -->
 <div class="container text-center">
-    <!-- Mensaje de éxito o error -->
+    <!-- Mostrar mensajes de éxito o error -->
     <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
         <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
-" role="alert">
-            <?php echo $_smarty_tpl->getValue('mensaje');?>
-
-        </div>
+"><?php echo $_smarty_tpl->getValue('mensaje');?>
+</div>
     <?php }?>
 
-    <!-- Formulario para buscar boletín -->
-    <form method="POST" action="">
+    <!-- Formulario para dar de baja un curso -->
+    <form action="darBajaCurso.php" method="POST">
         <div class="form-group">
-            <label for="dni">Ingrese el DNI del estudiante:</label>
-            <input type="text" class="form-control" id="dni" name="dni" required pattern="\d+" title="Solo se permiten números">
-        </div>
-        <button type="submit" class="btn btn-custom">Buscar</button>
-    </form>
-
-    <!-- Mostrar tabla o mensaje según los resultados -->
-    <?php if ((null !== ($_smarty_tpl->getValue('cursos') ?? null))) {?>
-        <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cursos')) > 0) {?>
-            <h2>Cursos en los que estás inscrito</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Curso</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+            <label for="curso">Selecciona el Curso:</label>
+            <select id="curso" name="curso" class="form-control" required>
+                <option value="">-- Selecciona un curso --</option>
+                <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
 $foreach0DoElse = false;
 ?>
-                        <tr>
-                            <td><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
-</td>
-                            <td>
-                                <form method="POST" action="">
-                                    <input type="hidden" name="dniEstudiante" value="<?php echo $_smarty_tpl->getValue('dniEstudiante');?>
-">
-                                    <input type="hidden" name="idCursoAnular" value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
-">
-                                    <button type="submit" class="btn btn-danger">Anular Inscripción</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php
+                    <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+ (Cupo: <?php echo $_smarty_tpl->getValue('curso')['cupo'];?>
+)</option>
+                <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                </tbody>
-            </table>
-        <?php } else { ?>
-            <p>No estás inscrito en ningún curso.</p>
-        <?php }?>
-    <?php }?>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-custom">Dar de Baja</button>
+    </form>
 </div>
 
 <!-- Scripts -->

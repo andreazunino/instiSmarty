@@ -1,5 +1,4 @@
 <?php
-// Incluir los archivos necesarios
 require_once '../../sql/db.php'; // Conexión a la base de datos
 require_once 'lib/smarty/libs/Smarty.class.php';
 
@@ -25,6 +24,6 @@ try {
     $smarty->assign('mensaje_tipo', 'danger');
 }
 
-// Mostrar la plantilla
+
 $smarty->display('templates/verDatosEstudiante.tpl');
 
